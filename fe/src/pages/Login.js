@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleChangeEmail = (e) => {
-    setEmail(e.target.value);
+  const handleChangeUsername = (e) => {
+    setUsername(e.target.value);
   };
 
   const handleChangePassword = (e) => {
@@ -14,7 +14,7 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email);
+    console.log(username);
     console.log(password);
   };
 
@@ -22,15 +22,15 @@ export default function Login() {
     <div>
       <form onSubmit={handleSubmit}>
         <div>
-          <label for="email">Email</label>
+          <label htmlFor="username">Username</label>
           <input
-            type="email"
-            value={email}
-            onChange={handleChangeEmail}
+            type="text"
+            value={username}
+            onChange={handleChangeUsername}
           ></input>
         </div>
         <div>
-          <label for="password">Password</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             value={password}
