@@ -3,10 +3,10 @@ import { useState } from "react";
 export default function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [age, setAge] = useState(null);
-  const [height, setHeight] = useState(null);
-  const [weight, setWeight] = useState(null);
-  const [isMale, setIsMale] = useState(true);
+  const [age, setAge] = useState("");
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
+  const [gender, setGender] = useState("male");
 
   const handleChangeUsername = (e) => {
     setUsername(e.target.value);
@@ -14,10 +14,6 @@ export default function Signup() {
 
   const handleChangePassword = (e) => {
     setPassword(e.target.value);
-  };
-
-  const handleChangeAge = (e) => {
-    setAge(parseInt(e.target.value));
   };
 
   const handleChangeAge = (e) => {
@@ -32,17 +28,25 @@ export default function Signup() {
     setWeight(parseInt(e.target.value));
   };
 
+  const handleChangeGender = (e) => {
+    setGender(e.target.value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email);
+    console.log(username);
     console.log(password);
+    console.log(age);
+    console.log(height);
+    console.log(weight);
+    console.log(gender);
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <div>
-          <label for="username">Username</label>
+          <label htmlFor="username">Username</label>
           <input
             type="username"
             value={username}
@@ -50,7 +54,7 @@ export default function Signup() {
           ></input>
         </div>
         <div>
-          <label for="password">Password</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             value={password}
@@ -58,11 +62,11 @@ export default function Signup() {
           ></input>
         </div>
         <div>
-          <label for="age">Age</label>
+          <label htmlFor="age">Age</label>
           <input type="number" value={age} onChange={handleChangeAge}></input>
         </div>
         <div>
-          <label for="height">Height</label>
+          <label htmlFor="height">Height</label>
           <input
             type="number"
             value={height}
@@ -70,7 +74,7 @@ export default function Signup() {
           ></input>
         </div>
         <div>
-          <label for="weight">Weight</label>
+          <label htmlFor="weight">Weight</label>
           <input
             type="number"
             value={weight}
@@ -78,12 +82,13 @@ export default function Signup() {
           ></input>
         </div>
         <div>
-          <label for="weight">Weight</label>
-          <input
-            type="number"
-            value={weight}
-            onChange={handleChangeWeight}
-          ></input>
+          <label htmlFor="gender" value={gender}>
+            Gender
+          </label>
+          <select name="gender" id="gender" onChange={handleChangeGender}>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
         </div>
         <button type="submit">Sign Up</button>
       </form>
