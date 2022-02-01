@@ -1,15 +1,21 @@
 import React from 'react';
 import './App.css';
-import Home from './components/home';
+// import Login from "./pages/Login";
+import { Routes, Route, Link } from "react-router-dom";
+import Mainhome from './pages/Home';
 
 
 
 function App() {
   return (
-    <div className='w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800'>
+    
+    <>
+    <Routes>
+      <Route path="/" element={<Mainhome/>} />
+      <Route path="/login" element={<Login />} />
+    </Routes>
+  </>
   
-  <Home/>
-    </div>
   
   );
 }

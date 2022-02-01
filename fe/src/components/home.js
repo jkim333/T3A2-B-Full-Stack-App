@@ -16,11 +16,11 @@ const Addbutton =()=>{
 
 const Home =()=>{
     return(
-        <div>
+        <div className='w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800'>
             <Navbar/>
             <Table/>
             <Table/>
-       <Addbutton/>
+           <Addbutton/>
 
         </div>
     )
