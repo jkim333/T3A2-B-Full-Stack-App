@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  node:
+    build: .
+    ports:
+      - "3002:3002"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo:/data/db
+volumes:
+  mongo:
