@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from './navbar';
-import Table from './table';
+import {Table} from './table';
 
 
 const Addbutton =()=>{
