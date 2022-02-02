@@ -38,4 +38,6 @@ const Table = (props) =>{
     )
  
 }
-export default Table;
+
+
+export { Row, Header, Table};
