@@ -5,6 +5,7 @@ import Signup from "./pages/Signup";
 import { Routes, Route, Link } from "react-router-dom";
 import Mainhome from './pages/Home';
 import Log from './pages/Log';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/signup" element={<Signup />} />
         <Route path="/log-entry" element={<Log />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </>
   );
