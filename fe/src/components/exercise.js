@@ -6,6 +6,8 @@ import { BsSearch } from "react-icons/bs";
 
 
 
+
+
 const ExerciseType = ({type})=>{
   return(
    <button className="text-center mt-7  mx-auto w-full text-blue-200 text-lg px-2 rounded-sm  border-b border-sky-800 opacity-82 cursor-pointer block hover:bg-sky-800 active:bg-sky-800 focus:outline-none ">
@@ -36,6 +38,5 @@ const ExerciseDisplay = ()=>{
     </div>
     )
 }
-
 
 export default ExerciseDisplay;
