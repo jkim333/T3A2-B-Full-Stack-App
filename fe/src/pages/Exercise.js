@@ -1,11 +1,11 @@
 import React from 'react';
-import Exercise from '../components/exercise';
+import ExerciseDisplay from '../components/exercise';
 
 
 const Search = ()=>{
     return(
     <div >
-     <Exercise/>
+     <ExerciseDisplay/>
     </div>
     )
 }
