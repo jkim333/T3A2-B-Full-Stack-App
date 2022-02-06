@@ -25,7 +25,7 @@ const ExerciseType = ({type,exercises, childBtn,btn})=>{
 
   return(
     <div>
-    <input onClick={handleActivitytype} value={type} type="button" className="text-center mt-7  mx-auto w-full text-blue-200 text-lg px-2 rounded-sm border-double border-4  border-sky-800 opacity-82 cursor-pointer block hover:bg-sky-800 active:bg-sky-800 focus:outline-none " style={{visibility:  type && btn !== true ?'visible': 'hidden'}} />
+    <input onClick={handleActivitytype} value={type} type="button" className="text-center mt-2  mx-auto w-full text-blue-200 text-lg px-2 rounded-sm border-b  border-sky-800 opacity-82 cursor-pointer block hover:bg-sky-800 active:bg-sky-800 focus:outline-none " style={{display:  type && btn !== true ?'block': 'none'}} />
     {
       activity.map((element,index)=>
       <input key={index} value={`${type}- ${element}`} type="button" className="text-center mt-1 list-none mx-auto w-full text-blue-300 text-base px-2 rounded-sm  border-b border-sky-800 opacity-82 cursor-pointer block hover:bg-sky-900 active:bg-sky-800 focus:outline-none "/>
@@ -102,7 +102,7 @@ const ExerciseDisplay = ()=>{
        </div>       
      )
    }   
-     <button  className="text-blue-200 bg-sky-800 opacity-85 hover:bg-sky-700 rounded-full w-16 h-16 text-2xl cursor-pointer my-8 mx-auto block">
+     <button  className="text-blue-200 bg-sky-700 opacity-85 hover:bg-sky-700 rounded-full w-16 h-16 text-2xl cursor-pointer my-8 mx-auto block">
         <Link to='/log-entry'>Next</Link>
       </button>
   </div>
