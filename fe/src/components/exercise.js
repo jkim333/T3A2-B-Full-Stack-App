@@ -57,7 +57,7 @@ const ExerciseDisplay = ()=>{
   useEffect(() => {
     
          function fetchData(){
-             fetch("http://localhost:9000/")
+             fetch("http://localhost:3002/")
             .then((res)=> res.json())
             .then((data)=>  handleExercises(data))
            }
