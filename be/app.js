@@ -31,8 +31,8 @@ mongoose
           .pipe(csv())
           .on("data", (data) => {
             const exercise = new Exercise({
-              exercise: data.Exercise,
-              activity: data.Activity,
+              exercise: data.exercise,
+              activity: data.activity,
             });
             results.push(exercise);
           })
