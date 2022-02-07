@@ -5,55 +5,69 @@ import Input from './loginput';
 
 
 
+const ExerciseType = ({type,exercises, handleBtn,btn})=>{
 
-const ExerciseType = ({type,exercises, childBtn,btn})=>{
-
-  const [activity, handleActivities] = useState([])
+  const [allexercises, setActivities] = useState([])
   const [activityBtn, handleActivity] = useState(false)
-  const [display, handleDisplay] = useState('block')
-  const activity_array = []
+  const [exercise, setExercise] = useState("")
+  const [activity, setActivity] = useState("")
+ 
 
-  function handleActivitytype(e){
-      exercises.map((exercise)=>{
-        if(exercise.exercise === type){
-          activity_array.push(exercise.activity)
+  function handleExercisevalue(e){
+       e.preventDefault()
+       const new_exercises = exercises.filter((exercise)=> exercise.exercise === type)
+       setActivities(new_exercises)
+       handleBtn(true)
+       return setExercise(e.target.value)
+      }
+      
+ 
+
+        function handleActivityvalue(e){
+           e.preventDefault()
+          handleActivity(true)
+         return setActivity(e.target.value)
+      
         }
-      })
-      childBtn(true)
-      console.log(e.target.value)
-      return handleActivities(activity_array)
-    }
-
-  function handleActivitySubmit(e){
-    console.log(e.target.value)
-    handleDisplay('none')
-    handleActivity(true)
-
-  }
-
-  return(
-    <div>
-    <input 
-    onClick={handleActivitytype} 
-    value={type} 
-    type="button" 
-    className="text-center mt-2  mx-auto w-full text-blue-200 text-lg px-2 rounded-sm border-b  border-sky-800 opacity-82 cursor-pointer block hover:bg-sky-800 active:bg-sky-800 focus:outline-none " style={{display:  type && btn !== true ?'block': 'none'}} />
-    {
-      activity.map((element,index)=>
-      <input 
-      key={index} 
-      value={element} 
-      onClick={handleActivitySubmit}
-      type="button" 
-      className="text-center mt-1 list-none mx-auto w-full text-blue-300 text-base px-2 rounded-sm  border-b border-sky-800 opacity-82 cursor-pointer block hover:bg-sky-900 active:bg-sky-800 focus:outline-none"
-      style={{display: display}}
-      />
+      
+      
+      if(activityBtn){
+        return <Input 
+        exercise={exercise} 
+        activity={activity} 
+      
+        />
+      }
+      return(
+        <div>
+        <input 
+        // onClick={handleExercisevalue} 
+        onClick={handleExercisevalue}
+        value={type} 
+        type="button" 
+        className="text-center mt-2  mx-auto w-full text-blue-200 text-lg px-2 rounded-sm border-b  border-sky-800 opacity-82 cursor-pointer block hover:bg-sky-800 active:bg-sky-800 focus:outline-none " 
+        style={{display:  type && !btn ? 'block': 'none'}} 
+        />
+        {
+            allexercises.map((exercise)=>
+              <input 
+              key={exercise._id} 
+              value={exercise.activity}
+              onClick={handleActivityvalue}
+              type="submit" 
+              className="text-center mt-2 list-none mx-auto w-full text-blue-200 text-base px-2 rounded-sm  border-b border-sky-800 opacity-82 cursor-pointer block hover:bg-sky-900 active:bg-sky-800 focus:outline-none"
+              style={{display: type && btn ? 'block' : 'none'}}
+              /> 
+              ) 
+          
+        }
+      </div>
       )
     }
-     { activityBtn === true ? <Input/>  : null}
-  </div>
-  )
-}
+     
+  
+
+
 
 
 
@@ -73,11 +87,15 @@ const ExerciseDisplay = ()=>{
 
   useEffect(() => {
     
-         function fetchData(){
-             fetch("http://localhost:3002/exercises")
-            .then((res)=> res.json())
-            .then((data)=>  handleExercises(data.results))
-           }
+       async function fetchData(){
+          try{
+              let exercise_response = await fetch("http://localhost:3002/exercises")
+              let data = await exercise_response.json();
+              handleExercises(data.results)
+            }catch(err){
+              alert(err);
+            }
+        }
            fetchData()
         
     }, [])
@@ -101,10 +119,7 @@ const ExerciseDisplay = ()=>{
           
   }
 
-  function childBtn(btn){
-    handleBtn(btn)
 
-  }
 
   return(
   <div className='w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800'>
@@ -117,7 +132,7 @@ const ExerciseDisplay = ()=>{
      type={type} 
      exercises={exercises} 
      btn={btn} 
-     childBtn={childBtn}/>
+     handleBtn={handleBtn}/>
        </div>       
      )
    }   
