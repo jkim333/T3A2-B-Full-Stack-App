@@ -9,7 +9,7 @@ const Addbutton =()=>{
     return(
         <>
         <button  className="text-blue-200 bg-sky-800 opacity-75 hover:bg-sky-700 rounded-full w-16 h-16 text-4xl cursor-pointer my-8 mx-auto block">
-        <Link to='/log-entry'>+</Link>
+        <Link to='/search-exercise'>+</Link>
         </button>
         <p className="text-blue-200 text-center p-0 m-0">Start new workout</p>
         </>
