@@ -9,6 +9,7 @@ const ExerciseType = ({type,exercises, handleBtn,btn})=>{
 
   const [allexercises, setActivities] = useState([])
   const [activityBtn, handleActivity] = useState(false)
+  const[id, handleActivityid] =useState("")
   const [exercise, setExercise] = useState("")
   const [activity, setActivity] = useState("")
  
@@ -26,15 +27,21 @@ const ExerciseType = ({type,exercises, handleBtn,btn})=>{
         function handleActivityvalue(e){
            e.preventDefault()
           handleActivity(true)
-         return setActivity(e.target.value)
+          setActivity(e.target.value)
+          allexercises.map((element)=>{
+            if(element.activity === e.target.value){
+           return handleActivityid(element._id)
+            }
+          })
+        
       
         }
-      
       
       if(activityBtn){
         return <Input 
         exercise={exercise} 
         activity={activity} 
+        id={id}
       
         />
       }

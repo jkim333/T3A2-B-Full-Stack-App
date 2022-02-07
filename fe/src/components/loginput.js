@@ -43,7 +43,7 @@ const RepsEntry = (props) => {
     function handleChange(e){
         props.handleRepsInput(parseInt(e.target.value))
     }
-   
+
     return(
         <>
          <p className="text-blue-200 text-center text-xl border-b border-sky-800 pt-10">{props.title}</p>
@@ -67,6 +67,7 @@ const ClearsaveButton= (props)=>{
     }
 
     let form_object = {
+        exerciseId: props.id,
         exercise :props.exercise,
         activity: props.activity,
         weights: props.inputweight,
@@ -79,6 +80,7 @@ const ClearsaveButton= (props)=>{
              method: "POST",
              headers: {
                "Content-Type": "application/json",
+               "Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWZkYmQxYTMwYTNiMjk4MDg2NTk2NzEiLCJpYXQiOjE2NDQwMjA5MDd9.cIz7VcRv-Tj48dAMswd5kOn63P-L5Kwqwx9ULJZabrw'
              },
              body: JSON.stringify(form_object),
            })
@@ -89,7 +91,6 @@ const ClearsaveButton= (props)=>{
         
     }
 
-          
  
   
     return(
@@ -106,7 +107,7 @@ const ClearsaveButton= (props)=>{
     )
 }
        
-const Input = ({exercise,activity}) => {
+const Input = ({exercise,activity,id}) => {
 
     const[inputweight, handleWeightInput] = useState("")  
     const[inputreps, handleRepsInput] = useState("")  
@@ -131,6 +132,7 @@ const Input = ({exercise,activity}) => {
            inputreps={inputreps}
            exercise={exercise}
            activity={activity}
+           id={id}
             />
            
         </>
