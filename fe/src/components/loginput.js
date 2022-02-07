@@ -66,10 +66,20 @@ const ClearsaveButton= (props)=>{
         props.handleRepsInput("")
     }
 
+    function handleSave(e){
+      console.log(props.inputweight)
+      console.log(props.inputreps)
+    }
     return(
         <div className="flex flex-row basis-1/3 mt-5">
-            <button className="shadow-xl shadow-sky-900 text-blue-200 hover:bg-sky-700 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2">Save</button>
-            <button  onClick={clearentry} className="shadow-xl shadow-sky-900 hover:bg-sky-700 text-blue-200 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2">Clear</button>
+            <input 
+            type="button"
+            onClick={handleSave}
+            value="Save"
+            className="shadow-xl shadow-sky-900 text-blue-200 hover:bg-sky-700 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2"/>
+            <button  
+            onClick={clearentry} 
+            className="shadow-xl shadow-sky-900 hover:bg-sky-700 text-blue-200 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2">Clear</button>
         </div>
     )
 }
@@ -94,6 +104,8 @@ const Input = () => {
           < ClearsaveButton
            handleWeightInput= {handleWeightInput}
            handleRepsInput= {handleRepsInput}
+           inputweight={inputweight}
+           inputreps={inputreps}
             />
            
         </>
