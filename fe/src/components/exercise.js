@@ -11,13 +11,12 @@ const ExerciseType = ({type,exercises, childBtn,btn})=>{
   const [activity, handleActivities] = useState([])
   const [activityBtn, handleActivity] = useState(false)
   const [display, handleDisplay] = useState('block')
-
   const activity_array = []
 
   function handleActivitytype(e){
       exercises.map((exercise)=>{
-        if(exercise.Exercise === type){
-          activity_array.push(exercise.Activity)
+        if(exercise.exercise === type){
+          activity_array.push(exercise.activity)
         }
       })
       childBtn(true)
@@ -75,9 +74,9 @@ const ExerciseDisplay = ()=>{
   useEffect(() => {
     
          function fetchData(){
-             fetch("http://localhost:3002/")
+             fetch("http://localhost:3002/exercises")
             .then((res)=> res.json())
-            .then((data)=>  handleExercises(data))
+            .then((data)=>  handleExercises(data.results))
            }
            fetchData()
         
@@ -85,7 +84,7 @@ const ExerciseDisplay = ()=>{
     
    const new_array = []
    exercises.map((exercise)=>{
-     new_array.push(exercise.Exercise)
+     new_array.push(exercise.exercise)
    })
 
    let first_occurence = false
