@@ -22,6 +22,7 @@ module.exports.postWorkouts = (req, res, next) => {
   const exercise = req.body.exercise;
   const activity = req.body.activity;
   const reps = req.body.reps;
+  const weight = req.body.weight;
 
   User.findOne({ _id: userId })
     .then((user) => {
@@ -32,6 +33,7 @@ module.exports.postWorkouts = (req, res, next) => {
             exercise: { id: exerciseId, exercise, activity },
             date: new Date(),
             reps: reps,
+            weight: weight,
           },
         ];
         return user.save().then((user) => {
