@@ -38,5 +38,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWZkY
     "exerciseId": "62007db821bf6cdd9e795232",
     "exercise": "Abs",
     "activity": "Crunch",
-    "reps": 10
+    "reps": 10,
+    "weight": 60
 }
