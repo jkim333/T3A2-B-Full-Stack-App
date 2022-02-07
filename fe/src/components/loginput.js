@@ -11,7 +11,7 @@ const WeightEntry = (props) => {
     }
     
     function handleChange(e){
-        props.handleWeightInput(e.target.value)
+        props.handleWeightInput(parseInt(e.target.value))
     }
    
     return(
@@ -41,7 +41,7 @@ const RepsEntry = (props) => {
     }
 
     function handleChange(e){
-        props.handleRepsInput(e.target.value)
+        props.handleRepsInput(parseInt(e.target.value))
     }
    
     return(
@@ -66,15 +66,37 @@ const ClearsaveButton= (props)=>{
         props.handleRepsInput("")
     }
 
-    function handleSave(e){
-      console.log(props.inputweight)
-      console.log(props.inputreps)
+    let form_object = {
+        exercise :props.exercise,
+        activity: props.activity,
+        weights: props.inputweight,
+        reps: props.inputreps
+
     }
+    async function handleSubmit(e){
+
+            await fetch("http://localhost:3002/workouts", {
+             method: "POST",
+             headers: {
+               "Content-Type": "application/json",
+             },
+             body: JSON.stringify(form_object),
+           })
+           .catch(err => {
+             alert(err);
+             return;
+           });
+        
+    }
+
+          
+ 
+  
     return(
         <div className="flex flex-row basis-1/3 mt-5">
             <input 
-            type="button"
-            onClick={handleSave}
+            type="submit"
+            onSubmit={handleSubmit}
             value="Save"
             className="shadow-xl shadow-sky-900 text-blue-200 hover:bg-sky-700 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2"/>
             <button  
@@ -84,11 +106,12 @@ const ClearsaveButton= (props)=>{
     )
 }
        
-const Input = () => {
+const Input = ({exercise,activity}) => {
 
     const[inputweight, handleWeightInput] = useState("")  
     const[inputreps, handleRepsInput] = useState("")  
    
+
     return(
         <>
            <WeightEntry 
@@ -106,6 +129,8 @@ const Input = () => {
            handleRepsInput= {handleRepsInput}
            inputweight={inputweight}
            inputreps={inputreps}
+           exercise={exercise}
+           activity={activity}
             />
            
         </>
