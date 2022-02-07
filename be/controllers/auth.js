@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 const User = require("../models/user");
-const user = require("../models/user");
 
 module.exports.postLogin = (req, res, next) => {
   const username = req.body.username;
