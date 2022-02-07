@@ -9,7 +9,8 @@ const helmet = require("helmet");
 const Exercise = require("./models/exercise");
 
 const authRoutes = require("./routes/auth");
-const exerciseroutes = require("./routes/exercise");
+const exerciseRoutes = require("./routes/exercise");
+const workoutRoutes = require("./routes/workout");
 
 const app = express();
 
@@ -19,7 +20,8 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json());
 app.use("/auth", authRoutes);
-app.use("/exercises", exerciseroutes);
+app.use("/exercises", exerciseRoutes);
+app.use("/workouts", workoutRoutes);
 
 mongoose
   .connect("mongodb://root:password@mongo:27017/db?authSource=admin")
