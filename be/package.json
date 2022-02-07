@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +21,8 @@
   "devDependencies": {
     "nodemon": "2.0.15",
     "csv-parser": "^3.0.0",
-    "helmet": "^5.0.2"
+    "helmet": "^5.0.2",
+    "jest": "^27.5.0",
+    "mockingoose": "^2.15.2"
   }
 }
