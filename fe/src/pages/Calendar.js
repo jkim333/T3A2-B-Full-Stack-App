@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Calendar from 'react-calendar';
 import Navbar from '../components/navbar';
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
@@ -6,12 +6,6 @@ import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 
 
 const CalendarDisplay = () =>{
-    const date = new Date().toLocaleDateString()
-    const [value, onChange] = useState(date);
-   
-    // function handleChange(){
-    //     onChange()
-    // }
   return (
    <div className="w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800">
        <Navbar/>
@@ -23,11 +17,8 @@ const CalendarDisplay = () =>{
        prev2Label={null}
        prevLabel = {<BsArrowLeftCircle style={{margin: '0 5px -3px 0px'}} />}
        showNavigation={true}
-    //    onChange={onChange}
-    //    value = {value}
        />
-        <div className='text-blue-200'>{value}</div> 
-   </div>
+     </div>
   ) 
 }
 

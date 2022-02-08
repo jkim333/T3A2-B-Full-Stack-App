@@ -1,6 +1,5 @@
-import React, { useState }from "react";
-import { Routes, Route, Link } from "react-router-dom";
-import Log from "../pages/Log";
+import React from "react";
+import { Link } from "react-router-dom";
 import Navbar from './navbar';
 import {Table} from './table';
 
@@ -19,6 +18,8 @@ const Addbutton =()=>{
 
 
 const Home =()=>{
+
+
     return(
         <div className='w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800'>
             <Navbar/>

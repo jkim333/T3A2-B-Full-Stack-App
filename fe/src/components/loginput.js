@@ -75,7 +75,7 @@ const ClearsaveButton= (props)=>{
 
     }
     async function handleSubmit(e){
-
+         e.preventDefault();
             await fetch("http://localhost:3002/workouts", {
              method: "POST",
              headers: {
