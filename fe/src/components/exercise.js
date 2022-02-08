@@ -30,25 +30,23 @@ const ExerciseType = ({type,exercises, handleBtn,btn})=>{
           setActivity(e.target.value)
           allexercises.map((element)=>{
             if(element.activity === e.target.value){
-           return handleActivityid(element._id)
+                handleActivityid(element._id)
             }
+            return id
           })
-        
-      
         }
+        
       
       if(activityBtn){
         return <Input 
         exercise={exercise} 
         activity={activity} 
         id={id}
-      
-        />
+         />
       }
       return(
         <div>
         <input 
-        // onClick={handleExercisevalue} 
         onClick={handleExercisevalue}
         value={type} 
         type="button" 
@@ -69,23 +67,15 @@ const ExerciseType = ({type,exercises, handleBtn,btn})=>{
           
         }
       </div>
-      )
-    }
+  )
+}
      
-  
-
-
-
-
-
 const TitleBar = ()=>{
     return(
        <p className='text-blue-200 text-2xl mt-5 border-b border-blue-300 text-center'>Log exercise routine</p>
        )
-   }
+}
   
-
- 
 const ExerciseDisplay = ()=>{
 
   const [exercises, handleExercises] = useState([])
@@ -94,37 +84,35 @@ const ExerciseDisplay = ()=>{
 
   useEffect(() => {
     
-       async function fetchData(){
-          try{
-              let exercise_response = await fetch("http://localhost:3002/exercises")
-              let data = await exercise_response.json();
-              handleExercises(data.results)
-            }catch(err){
-              alert(err);
-            }
+    async function fetchData(){
+      try{
+          let exercise_response = await fetch("http://localhost:3002/exercises")
+          let data = await exercise_response.json();
+          handleExercises(data.results)
+        }catch(err){
+          alert(err);
         }
-           fetchData()
-        
+      }
+        fetchData()
     }, [])
     
    const new_array = []
    exercises.map((exercise)=>{
-     new_array.push(exercise.exercise)
+    return new_array.push(exercise.exercise)
    })
 
    let first_occurence = false
    let final_array = []
    for(let i=0;i<new_array.length-1;i++){
-        if(new_array[i] === new_array[i + 1]  && first_occurence === false){
-            first_occurence = true
-            final_array.push(new_array[i])
-          }
+      if(new_array[i] === new_array[i + 1]  && first_occurence === false){
+          first_occurence = true
+          final_array.push(new_array[i])
+        }
 
-          else if (new_array[i] !== new_array[i + 1]){
-                final_array.push(new_array[i + 1])
-          }
-          
-  }
+        else if (new_array[i] !== new_array[i + 1]){
+              final_array.push(new_array[i + 1])
+        }
+    }
 
 
 
