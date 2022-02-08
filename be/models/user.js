@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema({
       },
       date: Date,
       reps: Number,
+      weight: Number,
     },
   ],
 });

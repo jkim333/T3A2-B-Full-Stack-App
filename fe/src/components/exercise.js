@@ -44,6 +44,7 @@ const ExerciseType = ({type,exercises, handleBtn,btn})=>{
         id={id}
          />
       }
+        
       return(
         <div>
         <input 
