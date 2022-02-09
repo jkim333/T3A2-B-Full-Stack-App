@@ -13,31 +13,28 @@ export default function Login() {
     setPassword(e.target.value);
   };
 
+  async function handleSubmit(e) {
+    e.preventDefault();
+    console.log(e);
 
-    async function handleSubmit(e)  {
-      e.preventDefault();
-       console.log(e)
-       
-      let form_object={
-        username: username,
-        password: password
-      }
-      await fetch("http://localhost:3002/auth/login", {
-               method: "POST",
-               headers: {
-                 "Content-Type": "application/json"
-               },
-               body: JSON.stringify(form_object),
-             }).then((res)=> res.json())
-             .then((data)=> console.log(data))
-             .catch(err => {
-               alert(err);
-               return;
-             });
-  
-  
+    let form_object = {
+      username: username,
+      password: password,
     };
-
+    await fetch("http://localhost:3002/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form_object),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => {
+        alert(err);
+        return;
+      });
+  }
 
   return (
     <div className="w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800">

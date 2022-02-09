@@ -1,143 +1,169 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 
 const WeightEntry = (props) => {
- 
-    function handleIncrement(){
-     return  props.inputweight ? props.handleWeightInput(parseInt(props.inputweight) + 1): null
-    }
+  function handleIncrement() {
+    return props.inputweight
+      ? props.handleWeightInput(parseInt(props.inputweight) + 1)
+      : null;
+  }
 
-    function handleDecrement(){
-        return props.inputweight && props.inputweight >0? props.handleWeightInput(parseInt(props.inputweight) - 1): null
-    }
-    
-    function handleChange(e){
-        props.handleWeightInput(parseInt(e.target.value))
-    }
-   
-    return(
-        <>
-        <p className="text-blue-200 text-center text-xl border-b border-sky-800 pt-10">{props.title}</p>
-        <div className="grid grid-cols-3 justify-items-center items-center">
-            <button onClick={handleDecrement} className="mr-1 shadow-xl shadow-sky-900 hover:bg-sky-700 text-blue-200 bg-sky-800 opacity-90 rounded-full w-12 h-12 text-4xl cursor-pointer my-8 mx-auto"> - </button>
-            <input onChange={handleChange} value={props.inputweight} className="w-20 text-center focus:outline-none border-b border-blue-200  bg-transparent placeholder:italic placeholder:text-slate-400 text-blue-200" type='number' />
-            <button onClick={handleIncrement} className="ml-1 shadow-xl shadow-sky-900 hover:bg-sky-700 text-blue-200 bg-sky-800 opacity-90 rounded-full w-12 h-12 text-3xl cursor-pointer my-8 mx-auto">+</button>
-        </div>
-      
-        </>
-    )
-}
-   
-     
+  function handleDecrement() {
+    return props.inputweight && props.inputweight > 0
+      ? props.handleWeightInput(parseInt(props.inputweight) - 1)
+      : null;
+  }
 
+  function handleChange(e) {
+    props.handleWeightInput(parseInt(e.target.value));
+  }
+
+  return (
+    <>
+      <p className="text-blue-200 text-center text-xl border-b border-sky-800 pt-10">
+        {props.title}
+      </p>
+      <div className="grid grid-cols-3 justify-items-center items-center">
+        <button
+          onClick={handleDecrement}
+          className="mr-1 shadow-xl shadow-sky-900 hover:bg-sky-700 text-blue-200 bg-sky-800 opacity-90 rounded-full w-12 h-12 text-4xl cursor-pointer my-8 mx-auto"
+        >
+          {" "}
+          -{" "}
+        </button>
+        <input
+          onChange={handleChange}
+          value={props.inputweight}
+          className="w-20 text-center focus:outline-none border-b border-blue-200  bg-transparent placeholder:italic placeholder:text-slate-400 text-blue-200"
+          type="number"
+        />
+        <button
+          onClick={handleIncrement}
+          className="ml-1 shadow-xl shadow-sky-900 hover:bg-sky-700 text-blue-200 bg-sky-800 opacity-90 rounded-full w-12 h-12 text-3xl cursor-pointer my-8 mx-auto"
+        >
+          +
+        </button>
+      </div>
+    </>
+  );
+};
 
 const RepsEntry = (props) => {
+  function handleIncrement() {
+    props.handleRepsInput(parseInt(props.inputreps) + 1);
+  }
+  function handleDecrement() {
+    props.handleRepsInput(parseInt(props.inputreps) - 1);
+  }
 
- 
-    function handleIncrement(){
-        props.handleRepsInput(parseInt(props.inputreps) + 1)
-    }
-    function handleDecrement(){
-        props.handleRepsInput(parseInt(props.inputreps) - 1)
-    }
+  function handleChange(e) {
+    props.handleRepsInput(parseInt(e.target.value));
+  }
 
-    function handleChange(e){
-        props.handleRepsInput(parseInt(e.target.value))
-    }
+  return (
+    <>
+      <p className="text-blue-200 text-center text-xl border-b border-sky-800 pt-10">
+        {props.title}
+      </p>
+      <div className="grid grid-cols-3 justify-items-center items-center">
+        <button
+          onClick={handleDecrement}
+          className="mr-1 shadow-xl shadow-sky-900 text-blue-200 hover:bg-sky-700 bg-sky-800 opacity-90 rounded-full w-12 h-12 text-4xl cursor-pointer my-8 mx-auto"
+        >
+          {" "}
+          -{" "}
+        </button>
+        <input
+          onChange={handleChange}
+          value={props.inputreps}
+          className="w-20 text-center focus:outline-none border-b border-blue-200  bg-transparent placeholder:italic placeholder:text-slate-400 text-blue-200"
+          type="number"
+          step="10"
+        />
+        <button
+          onClick={handleIncrement}
+          className="ml-1 shadow-xl shadow-sky-900 text-blue-200 hover:bg-sky-700 bg-sky-800 opacity-90 rounded-full w-12 h-12 text-3xl cursor-pointer my-8 mx-auto"
+        >
+          +
+        </button>
+      </div>
+    </>
+  );
+};
 
-    return(
-        <>
-         <p className="text-blue-200 text-center text-xl border-b border-sky-800 pt-10">{props.title}</p>
-        <div className="grid grid-cols-3 justify-items-center items-center">
-            <button onClick={handleDecrement} className="mr-1 shadow-xl shadow-sky-900 text-blue-200 hover:bg-sky-700 bg-sky-800 opacity-90 rounded-full w-12 h-12 text-4xl cursor-pointer my-8 mx-auto"> - </button>
-            <input onChange={handleChange} value={props.inputreps} className="w-20 text-center focus:outline-none border-b border-blue-200  bg-transparent placeholder:italic placeholder:text-slate-400 text-blue-200" type='number' step='10' />
-            <button onClick={handleIncrement} className="ml-1 shadow-xl shadow-sky-900 text-blue-200 hover:bg-sky-700 bg-sky-800 opacity-90 rounded-full w-12 h-12 text-3xl cursor-pointer my-8 mx-auto">+</button>
-        </div>
-      
-        </>
-    )
-}
-   
+const ClearsaveButton = (props) => {
+  function clearentry() {
+    props.handleWeightInput("");
+    props.handleRepsInput("");
+  }
 
-           
-const ClearsaveButton= (props)=>{
+  let form_object = {
+    exerciseId: props.id,
+    exercise: props.exercise,
+    activity: props.activity,
+    weights: props.inputweight,
+    reps: props.inputreps,
+  };
+  async function handleSubmit(e) {
+    e.preventDefault();
+    await fetch("http://localhost:3002/workouts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWZkYmQxYTMwYTNiMjk4MDg2NTk2NzEiLCJpYXQiOjE2NDQwMjA5MDd9.cIz7VcRv-Tj48dAMswd5kOn63P-L5Kwqwx9ULJZabrw",
+      },
+      body: JSON.stringify(form_object),
+    }).catch((err) => {
+      alert(err);
+      return;
+    });
+  }
 
-    function clearentry(){
-        props.handleWeightInput("")
-        props.handleRepsInput("")
-    }
+  return (
+    <div className="flex flex-row basis-1/3 mt-5">
+      <input
+        type="submit"
+        onSubmit={handleSubmit}
+        value="Save"
+        className="shadow-xl shadow-sky-900 text-blue-200 hover:bg-sky-700 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2"
+      />
+      <button
+        onClick={clearentry}
+        className="shadow-xl shadow-sky-900 hover:bg-sky-700 text-blue-200 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2"
+      >
+        Clear
+      </button>
+    </div>
+  );
+};
 
-    let form_object = {
-        exerciseId: props.id,
-        exercise :props.exercise,
-        activity: props.activity,
-        weights: props.inputweight,
-        reps: props.inputreps
+const Input = ({ exercise, activity, id }) => {
+  const [inputweight, handleWeightInput] = useState("");
+  const [inputreps, handleRepsInput] = useState("");
 
-    }
-    async function handleSubmit(e){
-         e.preventDefault();
-            await fetch("http://localhost:3002/workouts", {
-             method: "POST",
-             headers: {
-               "Content-Type": "application/json",
-               "Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWZkYmQxYTMwYTNiMjk4MDg2NTk2NzEiLCJpYXQiOjE2NDQwMjA5MDd9.cIz7VcRv-Tj48dAMswd5kOn63P-L5Kwqwx9ULJZabrw'
-             },
-             body: JSON.stringify(form_object),
-           })
-           .catch(err => {
-             alert(err);
-             return;
-           });
-        
-    }
+  return (
+    <>
+      <WeightEntry
+        title="Weights"
+        inputweight={inputweight}
+        handleWeightInput={handleWeightInput}
+      />
+      <RepsEntry
+        title="Reps"
+        inputreps={inputreps}
+        handleRepsInput={handleRepsInput}
+      />
+      <ClearsaveButton
+        handleWeightInput={handleWeightInput}
+        handleRepsInput={handleRepsInput}
+        inputweight={inputweight}
+        inputreps={inputreps}
+        exercise={exercise}
+        activity={activity}
+        id={id}
+      />
+    </>
+  );
+};
 
- 
-  
-    return(
-        <div className="flex flex-row basis-1/3 mt-5">
-            <input 
-            type="submit"
-            onSubmit={handleSubmit}
-            value="Save"
-            className="shadow-xl shadow-sky-900 text-blue-200 hover:bg-sky-700 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2"/>
-            <button  
-            onClick={clearentry} 
-            className="shadow-xl shadow-sky-900 hover:bg-sky-700 text-blue-200 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2">Clear</button>
-        </div>
-    )
-}
-       
-const Input = ({exercise,activity,id}) => {
-
-    const[inputweight, handleWeightInput] = useState("")  
-    const[inputreps, handleRepsInput] = useState("")  
-   
-
-    return(
-        <>
-           <WeightEntry 
-           title="Weights" 
-           inputweight = {inputweight}
-           handleWeightInput= {handleWeightInput}
-           />
-           <RepsEntry 
-           title="Reps" 
-           inputreps = {inputreps}
-           handleRepsInput= {handleRepsInput}
-           />
-          < ClearsaveButton
-           handleWeightInput= {handleWeightInput}
-           handleRepsInput= {handleRepsInput}
-           inputweight={inputweight}
-           inputreps={inputreps}
-           exercise={exercise}
-           activity={activity}
-           id={id}
-            />
-           
-        </>
-   )
-}
-    
-           
 export default Input;
