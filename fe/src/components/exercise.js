@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./navbar";
-import Input from "./loginput";
+import Input from "./input";
 
 const ExerciseType = ({ type, exercises, handleBtn, btn }) => {
   const [allexercises, setActivities] = useState([]);
@@ -32,7 +32,7 @@ const ExerciseType = ({ type, exercises, handleBtn, btn }) => {
   }
 
   if (activityBtn) {
-    return <Input exercise={exercise} activity={activity} id={id} />;
+    return <Input exercise={exercise} activity={activity} id={id}/>;
   }
 
   return (
@@ -60,8 +60,8 @@ const ExerciseType = ({ type, exercises, handleBtn, btn }) => {
 
 const TitleBar = () => {
   return (
-    <p className="text-blue-200 text-2xl mt-5 border-b border-blue-300 text-center">
-      Log exercise routine
+    <p className="text-blue-200 text-2xl border-b border-blue-300  mt-5 text-center">
+       Exercise Log
     </p>
   );
 };
@@ -69,6 +69,7 @@ const TitleBar = () => {
 const ExerciseDisplay = () => {
   const [exercises, handleExercises] = useState([]);
   const [btn, handleBtn] = useState(false);
+
 
   useEffect(() => {
     async function fetchData() {

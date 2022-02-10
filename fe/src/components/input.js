@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
+
+
 
 const WeightEntry = (props) => {
   function handleIncrement() {
@@ -90,7 +94,13 @@ const RepsEntry = (props) => {
   );
 };
 
-const ClearsaveButton = (props) => {
+
+
+
+
+
+const SaveclearButton = (props) => {
+
   function clearentry() {
     props.handleWeightInput("");
     props.handleRepsInput("");
@@ -103,8 +113,12 @@ const ClearsaveButton = (props) => {
     weights: props.inputweight,
     reps: props.inputreps,
   };
+
+
   async function handleSubmit(e) {
+   
     e.preventDefault();
+   
     await fetch("http://localhost:3002/workouts", {
       method: "POST",
       headers: {
@@ -117,29 +131,47 @@ const ClearsaveButton = (props) => {
       alert(err);
       return;
     });
+
+    try {
+      let input_res = await fetch("http://localhost:3002/workouts");
+      let data = await input_res.json();
+      console.log(data)
+    } catch (err) {
+      alert(err);
+    }
+
   }
+
+
 
   return (
     <div className="flex flex-row basis-1/3 mt-5">
-      <input
-        type="submit"
-        onSubmit={handleSubmit}
-        value="Save"
-        className="shadow-xl shadow-sky-900 text-blue-200 hover:bg-sky-700 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2"
-      />
-      <button
+        <button
+        className="shadow-xl shadow-sky-900 text-blue-200 hover:bg-sky-700 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2"  
+        type="submit" 
+        onClick={handleSubmit}><Link to="/log-entry">Save</Link>
+        </button>
+       <button
         onClick={clearentry}
         className="shadow-xl shadow-sky-900 hover:bg-sky-700 text-blue-200 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2"
-      >
-        Clear
-      </button>
+        >Clear
+       </button>
+     
+        {/* // <Table activity={props.activity} inputreps={props.inputreps} inputweight={props.inputweight}/> */}
+
     </div>
   );
 };
 
+
+
+
 const Input = ({ exercise, activity, id }) => {
   const [inputweight, handleWeightInput] = useState("");
   const [inputreps, handleRepsInput] = useState("");
+
+  
+
 
   return (
     <>
@@ -153,7 +185,7 @@ const Input = ({ exercise, activity, id }) => {
         inputreps={inputreps}
         handleRepsInput={handleRepsInput}
       />
-      <ClearsaveButton
+      <SaveclearButton
         handleWeightInput={handleWeightInput}
         handleRepsInput={handleRepsInput}
         inputweight={inputweight}
@@ -161,6 +193,8 @@ const Input = ({ exercise, activity, id }) => {
         exercise={exercise}
         activity={activity}
         id={id}
+        // handleSave={handleSave}
+        // save={save}
       />
     </>
   );
