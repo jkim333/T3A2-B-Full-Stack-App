@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
-import Brand from './components/brand'
+import Navbar from './components/navbar';
 
 
 
@@ -8,8 +8,8 @@ import Brand from './components/brand'
 
 //home page
 
-test('renders Brand component', () => {
-    render(<Brand/>)
-    const brandname = screen.getByText(/Xero fitness/);
+test('renders the Xero fitness brand name', () => {
+    const{getByText} = render(<Navbar/>)
+    const brandname = getByText(/Xero fitness/)
     expect(brandname).toBeInTheDocument();
 })
