@@ -74,7 +74,7 @@ const ExerciseDisplay = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        let exercise_response = await fetch("http://localhost:3002/exercises");
+        let exercise_response = await fetch("https://secret-forest-05738.herokuapp.com/exercises");
         let data = await exercise_response.json();
         handleExercises(data.results);
       } catch (err) {
@@ -84,24 +84,16 @@ const ExerciseDisplay = () => {
     fetchData();
   }, []);
 
-  function handledata(exercises) {
-    const new_array = [];
-    exercises.map((exercise) => {
-      return new_array.push(exercise.exercise);
-    });
+  
+function handledata(exercises){
+      
+  const new_array = []
+  exercises.map((obj)=> new_array.push(obj.exercise))
+  
+ const no_duplicate_exercises = new_array.filter((element,index)=> new_array.indexOf(element) === index)
+  return no_duplicate_exercises
+}
 
-    let first_occurence = false;
-    let final_array = [];
-    for (let i = 0; i < new_array.length - 1; i++) {
-      if (new_array[i] === new_array[i + 1] && first_occurence === false) {
-        first_occurence = true;
-        final_array.push(new_array[i]);
-      } else if (new_array[i] !== new_array[i + 1]) {
-        final_array.push(new_array[i + 1]);
-      }
-    }
-    return final_array;
-  }
 
   return (
     <div className="w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800">
