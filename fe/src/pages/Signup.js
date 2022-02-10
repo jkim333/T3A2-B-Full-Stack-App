@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
 
 export default function Signup() {
@@ -15,7 +16,6 @@ export default function Signup() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(e);
 
     let form_object = {
       username: username,
@@ -77,7 +77,7 @@ export default function Signup() {
             type="submit"
             className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gradient-to-b from-blue-900 to-sky-800 focus:outline-none transition duration-150 ease-in-out cursor-pointer"
           >
-            Sign Up
+           <Link to="/login">Sign Up</Link> 
           </button>
         </form>
       </div>

@@ -127,7 +127,9 @@ const SaveclearButton = (props) => {
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWZkYmQxYTMwYTNiMjk4MDg2NTk2NzEiLCJpYXQiOjE2NDQwMjA5MDd9.cIz7VcRv-Tj48dAMswd5kOn63P-L5Kwqwx9ULJZabrw",
       },
       body: JSON.stringify(form_object),
-    }).catch((err) => {
+    }).then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => {
       alert(err);
       return;
     });
