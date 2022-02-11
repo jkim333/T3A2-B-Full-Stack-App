@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import Footer from "./footer";
 import Navbar from "./navbar";
 
-
-
 const Home = () => {
   return (
     <div className="w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800">

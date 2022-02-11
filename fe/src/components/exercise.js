@@ -75,31 +75,9 @@ function handledata(array) {
   return no_duplicate_exercises;
 }
 
-<<<<<<< Updated upstream
 const ExerciseDisplay = () => {
   const [exercises, handleExercises] = useState([]);
   const [btn, handleBtn] = useState(false);
-=======
-
-
-const TitleBar = ()=>{
-    return(
-       <p className='text-blue-200 text-2xl mt-5 border-b border-blue-300 text-center'>Log exercise routine</p>
-       )
-   }
-  
-
-   function fetchData(){
-    fetch("http://localhost:3002/")
-   .then((res)=> res.json())
-   .then((data)=>  handleExercises(data))
-  }
-const ExerciseDisplay = ()=>{
-
-  const [exercises, handleExercises] = useState([])
-  const [btn, handleBtn] = useState(false)
-
->>>>>>> Stashed changes
 
   useEffect(() => {
     return fetch("https://secret-forest-05738.herokuapp.com/exercises")

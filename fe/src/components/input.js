@@ -108,7 +108,6 @@ const SaveclearButton = (props) => {
   async function handleSubmit(e) {
     e.preventDefault();
 
-
     const results = await fetch("http://localhost:3002/workouts", {
       method: "POST",
       headers: {
@@ -138,6 +137,7 @@ const SaveclearButton = (props) => {
   return (
     <div className="flex flex-row basis-1/3 mt-5">
       <button
+        data-testid="save-button"
         className="shadow-xl shadow-sky-900 text-blue-200 hover:bg-sky-700 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2"
         type="submit"
         onClick={handleSubmit}
