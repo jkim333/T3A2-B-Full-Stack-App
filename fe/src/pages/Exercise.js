@@ -6,8 +6,7 @@ const Search = () => {
   return (
     <div>
       <ExerciseDisplay />
-      <Footer/>
-      
+      <Footer />
     </div>
   );
 };

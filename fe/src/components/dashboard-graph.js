@@ -1,3 +1,4 @@
+import React from "react";
 import {
   LineChart,
   Line,
@@ -8,7 +9,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-export default function DashboardGraph({ title, exercise, time }) {
+export default function DashboardGraph({ title }) {
   const data = [{ name: "Page A", uv: 400, pv: 2400, amt: 2400 }];
   const renderLineChart = (
     <ResponsiveContainer width="100%" height="100%">

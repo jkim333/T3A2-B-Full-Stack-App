@@ -27,7 +27,7 @@ const Table = (props) => {
         {props.activity}
       </p>
       <Header />
-      <Row inputreps={props.inputreps} inputweight={props.inputweight}/>
+      <Row inputreps={props.inputreps} inputweight={props.inputweight} />
     </div>
   );
 };
