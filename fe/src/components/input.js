@@ -140,7 +140,7 @@ const SaveclearButton = (props) => {
       <button
         className="shadow-xl shadow-sky-900 text-blue-200 hover:bg-sky-700 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2"
         type="submit"
-        onSubmit={handleSubmit}
+        onClick={handleSubmit}
       >
         <Link to="/log-entry">Save</Link>
       </button>
