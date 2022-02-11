@@ -2,12 +2,20 @@ import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const Brand = () => {
+<<<<<<< Updated upstream
   return (
     <h1 className="font-sans text-blue-200 basis-1/2 text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl pl-3 py-1 xl:pl-12">
       Xero fitness
     </h1>
   );
 };
+=======
+    return(
+        <h1 data-testid="brandname" className='font-sans text-blue-200 basis-1/2 text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl pl-3 py-1 xl:pl-12'>Xero fitness</h1>
+    )
+}
+
+>>>>>>> Stashed changes
 
 const Menu = () => {
   const [click, handleClick] = useState(false);
