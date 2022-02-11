@@ -1,20 +1,15 @@
 require("dotenv").config();
 const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const csv = require("csv-parser");
-const fs = require("fs");
-const helmet = require("helmet");
 
-const Exercise = require("./models/exercise");
+const cors = require("cors");
+
+const helmet = require("helmet");
 
 const authRoutes = require("./routes/auth");
 const exerciseRoutes = require("./routes/exercise");
 const workoutRoutes = require("./routes/workout");
 
 const app = express();
-
-const port = 3002;
 
 app.use(cors());
 app.use(helmet());
@@ -23,35 +18,4 @@ app.use("/auth", authRoutes);
 app.use("/exercises", exerciseRoutes);
 app.use("/workouts", workoutRoutes);
 
-mongoose
-  .connect("mongodb://root:password@mongo:27017/db?authSource=admin")
-  .then(() => {
-    const results = [];
-    Exercise.find().then((exercises) => {
-      if (exercises.length === 0) {
-        fs.createReadStream("./data/exercises.csv")
-          .pipe(csv())
-          .on("data", (data) => {
-            const exercise = new Exercise({
-              exercise: data.exercise,
-              activity: data.activity,
-            });
-            results.push(exercise);
-          })
-          .on("end", () => {
-            Promise.all(results.map((result) => result.save()))
-              .then(() => {
-                app.listen(port, () => {
-                  console.log(`Listening on port ${port}`);
-                });
-              })
-              .catch((err) => console.log(err));
-          });
-      } else {
-        app.listen(port, () => {
-          console.log(`Listening on port ${port}`);
-        });
-      }
-    });
-  })
-  .catch((err) => console.log(err));
+module.exports = app;
