@@ -6,6 +6,8 @@ module.exports.getExercises = (req, res, next) => {
       return res.json({ results: exercises });
     })
     .catch((err) => {
-      console.log(err);
+      return res
+        .status(500)
+        .json({ error: "Something went wrong with the server." });
     });
 };

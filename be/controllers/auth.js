@@ -65,8 +65,3 @@ module.exports.postSignup = (req, res, next) => {
         .json({ error: "Something went wrong with the server." });
     });
 };
-
-module.exports.getAuthenticated = (req, res, next) => {
-  console.log(req.user);
-  return res.json({ message: "hello world" });
-};
