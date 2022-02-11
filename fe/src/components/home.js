@@ -1,35 +1,30 @@
-import React, { useState }from "react";
-import { Routes, Route, Link } from "react-router-dom";
-import Log from "../pages/Log";
-import Navbar from './navbar';
-import {Table} from './table';
+import React from "react";
+import { Link } from "react-router-dom";
+import Footer from "./footer";
+import Navbar from "./navbar";
 
-
-const Addbutton =()=>{ 
-    return(
-        <>
-        <button  className="text-blue-200 bg-sky-800 opacity-75 hover:bg-sky-700 rounded-full w-16 h-16 text-4xl cursor-pointer my-8 mx-auto block">
-        <Link to='/search-exercise'>+</Link>
-        </button>
-        <p className="text-blue-200 text-center p-0 m-0">Start new workout</p>
-        </>
-    )
- }
-       
-
-
-const Home =()=>{
-    return(
-        <div className='w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800'>
-            <Navbar/>
-            <Table/>
-            <Table/>
-           <Addbutton/>
-
-        </div>
-    )
-
-}
+const Home = () => {
+  return (
+    <div className="w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800">
+      <Navbar />
+      <div className="flex flex-row justify-center">
+        <Link
+          className="bg-sky-800 text-blue-200 rounded-full px-16 py-2  mt-20 my-auto "
+          to="/login"
+        >
+          Login
+        </Link>
+        <Link
+          className="bg-sky-800 text-blue-200 rounded-full px-14 py-2  mt-20 ml-5 my-auto "
+          to="/signup"
+        >
+          Sign up
+        </Link>
+      </div>
+      {/* <img src="https://images.pexels.com/photos/1092878/pexels-photo-1092878.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" width={50} height={50} /> */}
+      <Footer />
+    </div>
+  );
+};
 
 export default Home;
-  

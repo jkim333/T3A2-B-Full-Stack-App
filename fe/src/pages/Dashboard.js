@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Navbar from "../components/navbar";
 import DashboardGraph from "../components/dashboard-graph";
 

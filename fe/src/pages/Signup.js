@@ -1,13 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [age, setAge] = useState("");
-  const [height, setHeight] = useState("");
-  const [weight, setWeight] = useState("");
-  const [gender, setGender] = useState("male");
 
   const handleChangeUsername = (e) => {
     setUsername(e.target.value);
@@ -17,35 +14,38 @@ export default function Signup() {
     setPassword(e.target.value);
   };
 
-  const handleChangeAge = (e) => {
-    setAge(parseInt(e.target.value));
-  };
-
-  const handleChangeHeight = (e) => {
-    setHeight(parseInt(e.target.value));
-  };
-
-  const handleChangeWeight = (e) => {
-    setWeight(parseInt(e.target.value));
-  };
-
-  const handleChangeGender = (e) => {
-    setGender(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log(username);
-    console.log(password);
-    console.log(age);
-    console.log(height);
-    console.log(weight);
-    console.log(gender);
-  };
+
+    let form_object = {
+      username: username,
+      password: password,
+    };
+    await fetch("http://localhost:3002/auth/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form_object),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => {
+        alert(err);
+        return;
+      });
+  }
 
   return (
     <div className="w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800">
       <Navbar />
+      <h1 className="text-blue-200 text-center mt-5 text-lg">
+        Already have an account!{" "}
+        <Link className="bg-sky-800 rounded-lg p-3" to="/login">
+          Login{" "}
+        </Link>{" "}
+        here!
+      </h1>
       <div className="flex flex-col items-center py-10">
         <h2 className="text-3xl font-extrabold text-blue-200">Sign Up</h2>
         <form
@@ -80,71 +80,11 @@ export default function Signup() {
               className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm"
             ></input>
           </div>
-          <div className="mb-5">
-            <label
-              htmlFor="age"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Age
-            </label>
-            <input
-              type="number"
-              value={age}
-              onChange={handleChangeAge}
-              className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-            ></input>
-          </div>
-          <div className="mb-5">
-            <label
-              htmlFor="height"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Height
-            </label>
-            <input
-              type="number"
-              value={height}
-              onChange={handleChangeHeight}
-              className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-            ></input>
-          </div>
-          <div className="mb-5">
-            <label
-              htmlFor="weight"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Weight
-            </label>
-            <input
-              type="number"
-              value={weight}
-              onChange={handleChangeWeight}
-              className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-            ></input>
-          </div>
-          <div className="mb-5">
-            <label
-              htmlFor="gender"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Gender
-            </label>
-            <select
-              name="gender"
-              id="gender"
-              onChange={handleChangeGender}
-              value={gender}
-              className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-            >
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select>
-          </div>
           <button
             type="submit"
             className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gradient-to-b from-blue-900 to-sky-800 focus:outline-none transition duration-150 ease-in-out cursor-pointer"
           >
-            Sign Up
+            <Link to="/login">Sign Up</Link>
           </button>
         </form>
       </div>
