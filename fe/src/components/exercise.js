@@ -78,6 +78,7 @@ function handledata(array) {
 <<<<<<< Updated upstream
 const ExerciseDisplay = () => {
   const [exercises, handleExercises] = useState([]);
+  const [exerciseArray, handleData] = useState([]);
   const [btn, handleBtn] = useState(false);
 =======
 
