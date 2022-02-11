@@ -78,7 +78,7 @@ export default function Login() {
             type="submit"
             className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gradient-to-b from-blue-900 to-sky-800 focus:outline-none transition duration-150 ease-in-out cursor-pointer"
           >
-           <Link to='/'> Log In</Link>
+           <Link to='/start'> Log In</Link>
           </button>
         </form>
       </div>
