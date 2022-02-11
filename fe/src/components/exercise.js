@@ -77,7 +77,6 @@ function handledata(array) {
 
 const ExerciseDisplay = () => {
   const [exercises, handleExercises] = useState([]);
-  const [exerciseArray, handleData] = useState([]);
   const [btn, handleBtn] = useState(false);
 
   useEffect(() => {
