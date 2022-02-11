@@ -108,6 +108,7 @@ const SaveclearButton = (props) => {
   async function handleSubmit(e) {
     e.preventDefault();
 
+
     const results = await fetch("http://localhost:3002/workouts", {
       method: "POST",
       headers: {
