@@ -10,21 +10,23 @@ const Brand = () => {
 };
 
 const Menu = () => {
+  const [click, handleClick] = useState(false);
 
-const [click,handleClick] = useState(false)
-
-  if(click){
-    return(
+  if (click) {
+    return (
       <div>
-        <select name="menu" className="bg-sky-800 text-blue-200 focus:outline-none border-b border-blue-200 ">
-        <option  value="Logout">Logout</option>
-        <option value="Add new workout">Add new workout</option>
-      </select>
+        <select
+          name="menu"
+          className="bg-sky-800 text-blue-200 focus:outline-none border-b border-blue-200 "
+        >
+          <option value="Logout">Logout</option>
+          <option value="Add new workout">Add new workout</option>
+        </select>
       </div>
-    )
+    );
   }
   return (
-    <button className="pr-3 cursor-pointer" onClick={()=> handleClick(true)}>
+    <button className="pr-3 cursor-pointer" onClick={() => handleClick(true)}>
       <GiHamburgerMenu size={30} color="rgb(191 219 254)" />
     </button>
   );
