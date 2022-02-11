@@ -39,7 +39,13 @@ export default function Signup() {
   return (
     <div className="w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800">
       <Navbar />
-      <h1 className="text-blue-200 text-center mt-5 text-lg">Already have an account! <Link className="bg-sky-800 rounded-lg p-3" to="/login">Login  </Link> here!</h1>
+      <h1 className="text-blue-200 text-center mt-5 text-lg">
+        Already have an account!{" "}
+        <Link className="bg-sky-800 rounded-lg p-3" to="/login">
+          Login{" "}
+        </Link>{" "}
+        here!
+      </h1>
       <div className="flex flex-col items-center py-10">
         <h2 className="text-3xl font-extrabold text-blue-200">Sign Up</h2>
         <form
@@ -78,7 +84,7 @@ export default function Signup() {
             type="submit"
             className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gradient-to-b from-blue-900 to-sky-800 focus:outline-none transition duration-150 ease-in-out cursor-pointer"
           >
-           <Link to="/login">Sign Up</Link> 
+            <Link to="/login">Sign Up</Link>
           </button>
         </form>
       </div>
