@@ -5,6 +5,7 @@ import Navbar from "../components/navbar";
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+ 
 
   const handleChangeUsername = (e) => {
     setUsername(e.target.value);
@@ -16,7 +17,6 @@ export default function Login() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     let form_object = {
       username: username,
       password: password,
@@ -39,6 +39,7 @@ export default function Login() {
   return (
     <div className="w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800">
       <Navbar />
+      <h1 className="text-blue-200 text-center mt-5 text-lg">Don't have an account! <Link className="bg-sky-800 rounded-lg p-3" to="/signup">Sign up </Link> here!</h1>
       <div className="flex flex-col items-center py-10">
         <h2 className="text-3xl font-extrabold text-blue-200">Log In</h2>
         <form
