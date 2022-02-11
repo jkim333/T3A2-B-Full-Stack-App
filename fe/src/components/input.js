@@ -117,14 +117,14 @@ const SaveclearButton = (props) => {
       body: JSON.stringify(form_object),
     });
 
-    const workouts = await fetch("http://localhost:3002/workouts");
-
     try {
       const input_data = await results.json();
       console.log(input_data);
     } catch (err) {
       console.error(err);
     }
+
+    const workouts = await fetch("http://localhost:3002/workouts");
 
     try {
       const data = await workouts.json();
@@ -140,7 +140,7 @@ const SaveclearButton = (props) => {
         data-testid="save-button"
         className="shadow-xl shadow-sky-900 text-blue-200 hover:bg-sky-700 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2"
         type="submit"
-        onClick={handleSubmit}
+        onSubmit={handleSubmit}
       >
         <Link to="/log-entry">Save</Link>
       </button>

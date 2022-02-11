@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/navbar";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+ const navigate = useNavigate();
   const handleChangeUsername = (e) => {
     setUsername(e.target.value);
   };
@@ -33,6 +33,7 @@ export default function Login() {
         alert(err);
         return;
       });
+   navigate('/start')
   }
 
   return (
@@ -82,8 +83,7 @@ export default function Login() {
           <button
             type="submit"
             className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gradient-to-b from-blue-900 to-sky-800 focus:outline-none transition duration-150 ease-in-out cursor-pointer"
-          >
-            <Link to="/start"> Log In</Link>
+          > Log In
           </button>
         </form>
       </div>
