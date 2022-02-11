@@ -3,7 +3,7 @@ function fetch_data() {
 }
 
 function fetch_workout() {
-  return fetch("http://localhost:3002/workouts");
+  return fetch("https://secret-forest-05738.herokuapp.com/workouts");
 }
 const mock_obj = {
   exerciseId: 1,

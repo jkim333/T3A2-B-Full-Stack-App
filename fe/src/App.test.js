@@ -18,14 +18,8 @@ test("fetches exercise list", async () => {
   expect(results).not.toBeUndefined();
 });
 test("handles error for workout data fetching", async () => {
-  expect.assertions(1);
-  try {
-    const results = await fetch_workout();
-  } catch (e) {
-    expect(e).toEqual({
-      error: "workout data not found",
-    });
-  }
+      await expect(fetch_workout()).rejects.toMatch('error');
+ 
 });
 
 test("object is stringified", () => {
