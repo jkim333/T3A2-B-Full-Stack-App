@@ -108,25 +108,27 @@ const SaveclearButton = (props) => {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    await fetch("http://localhost:3002/workouts", {
+
+    const results = await fetch("http://localhost:3002/workouts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWZkYmQxYTMwYTNiMjk4MDg2NTk2NzEiLCJpYXQiOjE2NDQwMjA5MDd9.cIz7VcRv-Tj48dAMswd5kOn63P-L5Kwqwx9ULJZabrw",
+        Authorization: "Bearer ",
       },
       body: JSON.stringify(form_object),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((err) => {
-        alert(err);
-        return;
-      });
+    });
+
+    const workouts = await fetch("http://localhost:3002/workouts");
 
     try {
-      let input_res = await fetch("http://localhost:3002/workouts");
-      let data = await input_res.json();
+      const input_data = await results.json();
+      console.log(input_data);
+    } catch (err) {
+      console.error(err);
+    }
+
+    try {
+      const data = await workouts.json();
       console.log(data);
     } catch (err) {
       alert(err);
@@ -138,7 +140,7 @@ const SaveclearButton = (props) => {
       <button
         className="shadow-xl shadow-sky-900 text-blue-200 hover:bg-sky-700 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2"
         type="submit"
-        onClick={handleSubmit}
+        onSubmit={handleSubmit}
       >
         <Link to="/log-entry">Save</Link>
       </button>
@@ -148,7 +150,6 @@ const SaveclearButton = (props) => {
       >
         Clear
       </button>
-
       {/* // <Table activity={props.activity} inputreps={props.inputreps} inputweight={props.inputweight}/> */}
     </div>
   );
@@ -178,8 +179,6 @@ const Input = ({ exercise, activity, id }) => {
         exercise={exercise}
         activity={activity}
         id={id}
-        // handleSave={handleSave}
-        // save={save}
       />
     </>
   );

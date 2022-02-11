@@ -66,51 +66,42 @@ const TitleBar = () => {
   );
 };
 
+function handledata(array) {
+  const new_array = [];
+  array.map((obj) => new_array.push(obj.exercise));
+  const no_duplicate_exercises = new_array.filter(
+    (element, index) => new_array.indexOf(element) === index
+  );
+  return no_duplicate_exercises;
+}
+
 const ExerciseDisplay = () => {
   const [exercises, handleExercises] = useState([]);
   const [exerciseArray, handleData] = useState([]);
   const [btn, handleBtn] = useState(false);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        let exercise_response = await fetch(
-          "https://secret-forest-05738.herokuapp.com/exercises"
-        );
-        let data = await exercise_response.json();
-        handleExercises(data.results); //state change
-        handledata(data.results); //calls function
-      } catch (err) {
-        alert(err);
-      }
-    }
-    fetchData();
+    return fetch("https://secret-forest-05738.herokuapp.com/exercises")
+      .then((res) => res.json())
+      .then((data) => handleExercises(data.results))
+      .catch((err) => alert(err));
   }, []);
-
-  function handledata(exercises) {
-    const new_array = [];
-    exercises.map((obj) => new_array.push(obj.exercise));
-
-    const no_duplicate_exercises = new_array.filter(
-      (element, index) => new_array.indexOf(element) === index
-    );
-    return handleData(no_duplicate_exercises);
-  }
 
   return (
     <div className="w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800">
       <Navbar />
       <TitleBar />
-      {exerciseArray.map((type, index) => (
-        <div key={index}>
-          <ExerciseType
-            type={type}
-            exercises={exercises}
-            btn={btn}
-            handleBtn={handleBtn}
-          />
-        </div>
-      ))}
+      {exercises &&
+        handledata(exercises).map((type, index) => (
+          <div key={index}>
+            <ExerciseType
+              type={type}
+              exercises={exercises}
+              btn={btn}
+              handleBtn={handleBtn}
+            />
+          </div>
+        ))}
     </div>
   );
 };
