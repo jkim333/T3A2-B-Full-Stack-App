@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { render, screen } from '@testing-library/react';
+import App from './App';
 import { render, screen, fireEvent} from '@testing-library/react';
 import App from './App';
 import Navbar from './components/navbar'
@@ -12,8 +14,26 @@ import Mainhome from './pages/Home';
 
 
 
+test('renders the Xero fitness brand name', () => {
+    render(<Navbar/>)
+    const element = screen.getByTestId('brandname')
+    expect(element).toHaveTextContent('Xero fitness');
+})
 
-//brandname
+
+function fetchData(){
+    const result = await fetch("http://localhost:3002/")
+    const data = await result.json()
+    return data
+}
+
+test('fetches exercise list from backend server',()=>{
+     
+     
+})
+
+
+=======
 // test('renders the Xero fitness brand name', () => {
 //     render(<Navbar/>)
 //     const element = screen.getByTestId('brandname')
@@ -45,3 +65,4 @@ it('renders correctly', () => {
     fireEvent.change(input)
     expect(input.value).not.toBeNull();
   })
+
