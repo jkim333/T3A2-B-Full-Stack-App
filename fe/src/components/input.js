@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-
-
-
 const WeightEntry = (props) => {
   function handleIncrement() {
     return props.inputweight
@@ -94,13 +91,7 @@ const RepsEntry = (props) => {
   );
 };
 
-
-
-
-
-
 const SaveclearButton = (props) => {
-
   function clearentry() {
     props.handleWeightInput("");
     props.handleRepsInput("");
@@ -114,64 +105,59 @@ const SaveclearButton = (props) => {
     reps: props.inputreps,
   };
 
-
   async function handleSubmit(e) {
-   
     e.preventDefault();
-   
-    await fetch("http://localhost:3002/workouts", {
+
+
+    const results = await fetch("http://localhost:3002/workouts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWZkYmQxYTMwYTNiMjk4MDg2NTk2NzEiLCJpYXQiOjE2NDQwMjA5MDd9.cIz7VcRv-Tj48dAMswd5kOn63P-L5Kwqwx9ULJZabrw",
+        Authorization: "Bearer ",
       },
       body: JSON.stringify(form_object),
-    }).catch((err) => {
-      alert(err);
-      return;
     });
 
+    const workouts = await fetch("http://localhost:3002/workouts");
+
     try {
-      let input_res = await fetch("http://localhost:3002/workouts");
-      let data = await input_res.json();
-      console.log(data)
+      const input_data = await results.json();
+      console.log(input_data);
+    } catch (err) {
+      console.error(err);
+    }
+
+    try {
+      const data = await workouts.json();
+      console.log(data);
     } catch (err) {
       alert(err);
     }
-
   }
-
-
 
   return (
     <div className="flex flex-row basis-1/3 mt-5">
-        <button
-        className="shadow-xl shadow-sky-900 text-blue-200 hover:bg-sky-700 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2"  
-        type="submit" 
-        onClick={handleSubmit}><Link to="/log-entry">Save</Link>
-        </button>
-       <button
+      <button
+        className="shadow-xl shadow-sky-900 text-blue-200 hover:bg-sky-700 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2"
+        type="submit"
+        onClick={handleSubmit}
+      >
+        <Link to="/log-entry">Save</Link>
+      </button>
+      <button
         onClick={clearentry}
         className="shadow-xl shadow-sky-900 hover:bg-sky-700 text-blue-200 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2"
-        >Clear
-       </button>
-     
-        {/* // <Table activity={props.activity} inputreps={props.inputreps} inputweight={props.inputweight}/> */}
-
+      >
+        Clear
+      </button>
+      {/* // <Table activity={props.activity} inputreps={props.inputreps} inputweight={props.inputweight}/> */}
     </div>
   );
 };
 
-
-
-
 const Input = ({ exercise, activity, id }) => {
   const [inputweight, handleWeightInput] = useState("");
   const [inputreps, handleRepsInput] = useState("");
-
-  
-
 
   return (
     <>
@@ -193,8 +179,6 @@ const Input = ({ exercise, activity, id }) => {
         exercise={exercise}
         activity={activity}
         id={id}
-        // handleSave={handleSave}
-        // save={save}
       />
     </>
   );

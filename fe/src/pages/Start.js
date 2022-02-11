@@ -1,8 +1,7 @@
 import React from "react";
-import Navbar from "../components/navbar";
-import { Table } from "../components/table";
 import { Link } from "react-router-dom";
 import Footer from "../components/footer";
+import Navbar from "../components/navbar";
 
 const Addbutton = () => {
   return (
@@ -15,15 +14,16 @@ const Addbutton = () => {
   );
 };
 
-const Log = () => {
+const Startpage = () => {
   return (
     <div className="w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800">
       <Navbar />
-      <Table />
+
+      {/* <img src="https://images.pexels.com/photos/1092878/pexels-photo-1092878.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" width={50} height={50} /> */}
       <Addbutton />
       <Footer />
     </div>
   );
 };
 
-export default Log;
+export default Startpage;
