@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/navbar";
 
-export default function Login() {
+export default function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
- const navigate = useNavigate();
+  const navigate = useNavigate();
+
   const handleChangeUsername = (e) => {
     setUsername(e.target.value);
   };
@@ -28,14 +29,10 @@ export default function Login() {
       body: JSON.stringify(form_object),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((err) => {
-        alert(err);
-        return;
-      });
-   navigate('/start')
+      .then((data) => props.handleToken(data["accessToken"]))
+      .catch((err) => alert(err));
+    navigate("/start");
   }
-
   return (
     <div className="w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800">
       <Navbar />
@@ -83,7 +80,9 @@ export default function Login() {
           <button
             type="submit"
             className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gradient-to-b from-blue-900 to-sky-800 focus:outline-none transition duration-150 ease-in-out cursor-pointer"
-          > Log In
+          >
+            {" "}
+            Log In
           </button>
         </form>
       </div>

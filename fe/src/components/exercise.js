@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./navbar";
 import Input from "./input";
 
-const ExerciseType = ({ type, exercises, handleBtn, btn }) => {
+const ExerciseType = ({ type, exercises, handleBtn, btn, token }) => {
   const [allexercises, setActivities] = useState([]);
   const [activityBtn, handleActivity] = useState(false);
   const [id, handleActivityid] = useState("");
@@ -32,7 +32,9 @@ const ExerciseType = ({ type, exercises, handleBtn, btn }) => {
   }
 
   if (activityBtn) {
-    return <Input exercise={exercise} activity={activity} id={id} />;
+    return (
+      <Input exercise={exercise} activity={activity} id={id} token={token} />
+    );
   }
 
   return (
@@ -75,7 +77,7 @@ function handledata(array) {
   return no_duplicate_exercises;
 }
 
-const ExerciseDisplay = () => {
+const ExerciseDisplay = (props) => {
   const [exercises, handleExercises] = useState([]);
   const [btn, handleBtn] = useState(false);
 
@@ -98,6 +100,7 @@ const ExerciseDisplay = () => {
               exercises={exercises}
               btn={btn}
               handleBtn={handleBtn}
+              token={props.token}
             />
           </div>
         ))}

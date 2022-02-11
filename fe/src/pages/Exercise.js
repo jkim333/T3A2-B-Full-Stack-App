@@ -2,10 +2,10 @@ import React from "react";
 import ExerciseDisplay from "../components/exercise";
 import Footer from "../components/footer";
 
-const Search = () => {
+const Search = (props) => {
   return (
     <div>
-      <ExerciseDisplay />
+      <ExerciseDisplay token={props.token} />
       <Footer />
     </div>
   );

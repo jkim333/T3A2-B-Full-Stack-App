@@ -24,10 +24,13 @@ const Table = (props) => {
   return (
     <div className=" p-0.5 rounded w-11/12 mx-auto my-7 ">
       <p className="text-blue-200 text-center text-xl border-b border-sky-800 pt-10">
-        {props.activity}
+        {props.workouts.activity}
       </p>
       <Header />
-      <Row inputreps={props.inputreps} inputweight={props.inputweight} />
+      <Row
+        inputreps={props.workouts.inputreps}
+        inputweight={props.workouts.inputweight}
+      />
     </div>
   );
 };

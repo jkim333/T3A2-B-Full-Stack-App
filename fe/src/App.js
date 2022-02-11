@@ -8,20 +8,28 @@ import Search from "./pages/Exercise";
 import Log from "./pages/Log";
 import Startpage from "./pages/Start";
 
+
+
 function App() {
   const [token, setToken] = useState(null);
+  // const [userID, setUserid] = useState('');
+
+  function handleToken(token){
+      setToken(token)
+
+  }
 
   return (
-    <>
+  
       <Routes>
-        <Route path="/" element={<Mainhome />} />
+        <Route path="/" element={<Mainhome setToken={setToken} />}/>
         <Route path="/signup" element={<Signup />} />
-        <Route path="/start" element={<Startpage />} />
-        <Route path="/login" element={<Login token={token} setToken={setToken} />} />
-        <Route path="/log-entry" element={<Log />} />
-        <Route path="/search-exercise" element={<Search />} />
+        <Route path="/start" element={<Startpage setToken={setToken} token={token}/>} />
+        <Route path="/search-exercise" element={<Search  token={token} setToken={setToken} /> } />
+        <Route path="/log-entry" element={<Log token={token}/>} />
+        <Route path="/login" element={<Login token={token} handleToken={handleToken}  />} />
+    
       </Routes>
-    </>
   );
 }
 

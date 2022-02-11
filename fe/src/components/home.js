@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import Footer from "./footer";
 import Navbar from "./navbar";
 
-const Home = () => {
+const Home = (props) => {
   return (
     <div className="w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800">
-      <Navbar />
+      <Navbar setToken={props.setToken} />
       <div className="flex flex-row justify-center">
         <Link
           className="bg-sky-800 text-blue-200 rounded-full px-16 py-2  mt-20 my-auto "

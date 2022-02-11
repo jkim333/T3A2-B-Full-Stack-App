@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/navbar";
 
@@ -17,7 +17,6 @@ export default function Signup() {
 
   async function handleSubmit(e) {
     e.preventDefault();
- console.log("button submit")
     let form_object = {
       username: username,
       password: password,
@@ -31,9 +30,8 @@ export default function Signup() {
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
-      .catch((err) =>  alert(err)
-      );
-      navigate("/login");
+      .catch((err) => alert(err));
+    navigate("/login");
   }
 
   return (
@@ -83,7 +81,8 @@ export default function Signup() {
           <button
             type="submit"
             className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gradient-to-b from-blue-900 to-sky-800 focus:outline-none transition duration-150 ease-in-out cursor-pointer"
-          >Sign Up
+          >
+            Sign Up
           </button>
         </form>
       </div>

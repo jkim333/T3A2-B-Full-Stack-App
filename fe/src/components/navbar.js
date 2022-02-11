@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { useNavigate } from "react-router-dom";
 
 const Brand = () => {
   return (
@@ -12,19 +13,29 @@ const Brand = () => {
   );
 };
 
-const Menu = () => {
+const Menu = (props) => {
   const [click, handleClick] = useState(false);
+  const navigate = useNavigate();
+
+  function logout() {
+    props.setToken(null);
+    navigate("/login");
+  }
 
   if (click) {
     return (
       <div>
-        <select
-          name="menu"
-          className="bg-sky-800 text-blue-200 focus:outline-none border-b border-blue-200 "
-        >
-          <option value="Logout">Logout</option>
-          <option value="Add new workout">Add new workout</option>
-        </select>
+        <ul className="bg-sky-800 text-blue-200  text-base lg:text-lg  xl:text-xl mr-2 lg:mr-2  lg:mt-2 flex flex-col  focus:outline-none  list-none">
+          <li
+            onClick={logout}
+            className="shadow-sky-900 shadow-xl pl-2 cursor:pointer"
+          >
+            Logout
+          </li>
+          <li className="shadow-sky-900 shadow-xl pl-2 cursor:pointer">
+            Add new workout
+          </li>
+        </ul>
       </div>
     );
   }
@@ -35,11 +46,11 @@ const Menu = () => {
   );
 };
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <div className="flex justify-between bg-sky-800">
       <Brand />
-      <Menu />
+      <Menu setToken={props.setToken} token={props.token} />
     </div>
   );
 };

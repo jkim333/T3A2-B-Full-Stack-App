@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const WeightEntry = (props) => {
   function handleIncrement() {
@@ -92,6 +92,7 @@ const RepsEntry = (props) => {
 };
 
 const SaveclearButton = (props) => {
+  const navigate = useNavigate();
   function clearentry() {
     props.handleWeightInput("");
     props.handleRepsInput("");
@@ -105,57 +106,47 @@ const SaveclearButton = (props) => {
     reps: props.inputreps,
   };
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-
-    const results = await fetch("http://localhost:3002/workouts", {
+    fetch("https://secret-forest-05738.herokuapp.com/workouts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer ",
+        authorization: `Bearer ${props.token}`,
       },
       body: JSON.stringify(form_object),
-    });
-
-    try {
-      const input_data = await results.json();
-      console.log(input_data);
-    } catch (err) {
-      console.error(err);
-    }
-
-    const workouts = await fetch("http://localhost:3002/workouts");
-
-    try {
-      const data = await workouts.json();
-      console.log(data);
-    } catch (err) {
-      alert(err);
-    }
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => {
+        alert(err);
+        return;
+      });
+    console.log(props.token);
+    navigate("/log-entry");
   }
 
   return (
-    <div className="flex flex-row basis-1/3 mt-5">
-      <button
-        data-testid="save-button"
-        className="shadow-xl shadow-sky-900 text-blue-200 hover:bg-sky-700 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2"
-        type="submit"
-        onSubmit={handleSubmit}
-      >
-        <Link to="/log-entry">Save</Link>
-      </button>
+    <div className="flex flex-row basis-1/2 mt-5">
+      <form className="flex flex-row basis-1/2 " onSubmit={handleSubmit}>
+        <input
+          data-testid="save-button"
+          className="shadow-xl shadow-sky-900 text-blue-200 hover:bg-sky-700 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2"
+          type="submit"
+          value="Save"
+        />
+      </form>
       <button
         onClick={clearentry}
         className="shadow-xl shadow-sky-900 hover:bg-sky-700 text-blue-200 bg-sky-800 opacity-85 rounded-sm w-20 h-14 text-2xl cursor-pointer my-6 mx-auto px-2"
       >
         Clear
       </button>
-      {/* // <Table activity={props.activity} inputreps={props.inputreps} inputweight={props.inputweight}/> */}
     </div>
   );
 };
 
-const Input = ({ exercise, activity, id }) => {
+const Input = ({ exercise, activity, id, token }) => {
   const [inputweight, handleWeightInput] = useState("");
   const [inputreps, handleRepsInput] = useState("");
 
@@ -179,6 +170,7 @@ const Input = ({ exercise, activity, id }) => {
         exercise={exercise}
         activity={activity}
         id={id}
+        token={token}
       />
     </>
   );
