@@ -103,7 +103,7 @@ const SaveclearButton = (props) => {
     exercise: props.exercise,
     activity: props.activity,
     weights: props.inputweight,
-    reps: props.inputreps
+    reps: props.inputreps,
   };
 
   function handleSubmit(e) {
@@ -112,7 +112,7 @@ const SaveclearButton = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "authorization": `Bearer ${props.token}`,
+        authorization: `Bearer ${props.token}`,
       },
       body: JSON.stringify(form_object),
     })

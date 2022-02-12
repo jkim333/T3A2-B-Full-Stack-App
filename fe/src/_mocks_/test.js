@@ -1,4 +1,3 @@
-
 function fetch_data() {
   return fetch("https://secret-forest-05738.herokuapp.com/exercises");
 }
@@ -14,11 +13,8 @@ const mock_obj = {
   reps: 12,
 };
 
-
 module.exports = {
   fetch_data,
   mock_obj: mock_obj,
-  fetch_workout
+  fetch_workout,
 };
-
-

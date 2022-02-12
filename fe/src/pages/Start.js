@@ -16,7 +16,12 @@ const Addbutton = () => {
       >
         +
       </button>
-      <p className="text-blue-200 text-center p-0 m-0" data-testid="start-workout">Start new workout</p>
+      <p
+        className="text-blue-200 text-center p-0 m-0"
+        data-testid="start-workout"
+      >
+        Start new workout
+      </p>
     </>
   );
 };

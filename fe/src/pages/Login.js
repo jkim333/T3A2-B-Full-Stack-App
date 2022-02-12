@@ -33,7 +33,7 @@ export default function Login(props) {
       .catch((err) => alert(err));
     navigate("/start");
   }
-  // 
+  //
   return (
     <div className="w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800">
       <Navbar />
