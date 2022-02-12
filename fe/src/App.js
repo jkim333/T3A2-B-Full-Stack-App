@@ -13,10 +13,10 @@ import Startpage from "./pages/Start";
 function App() {
   const [token, setToken] = useState(null);
   // const [userID, setUserid] = useState('');
-
+  // console.log(token)
   function handleToken(token){
       setToken(token)
-
+     
   }
 
   return (

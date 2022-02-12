@@ -19,6 +19,7 @@ const Menu = (props) => {
 
   function logout() {
     props.setToken(null);
+    console.log(props.token)
     navigate("/login");
   }
 
