@@ -16,7 +16,7 @@ function App() {
   // console.log(token)
   function handleToken(token){
       setToken(token)
-     
+     console.log(token)
   }
 
   return (
