@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/navbar";
 import { Table } from "../components/table";
-import Footer from "../components/footer";
+// import Footer from "../components/footer";
 
 // const Addbutton = () => {
 //   return (
@@ -16,11 +16,11 @@ import Footer from "../components/footer";
 
 const Log = (props) => {
   return (
-    <div className="w-screen h-screen overflow-y-scroll box-border  bg-gradient-to-b from-blue-900 to-sky-800">
+    <div className="w-screen h-full box-border  bg-gradient-to-b from-blue-900 to-sky-800">
       <Navbar setToken={props.setToken} token={props.token}/>
       <Table workouts={props.workouts} />
-      {/* <Addbutton /> */}
-      <Footer />
+      
+      {/* <Footer /> */}
     </div>
   );
 };

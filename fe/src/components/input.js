@@ -105,9 +105,9 @@ const SaveclearButton = (props) => {
     weight: props.inputweight,
     reps: props.inputreps,
   };
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    fetch("https://secret-forest-05738.herokuapp.com/workouts", {
+   await fetch("https://secret-forest-05738.herokuapp.com/workouts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -122,7 +122,7 @@ const SaveclearButton = (props) => {
         return;
       });
 
-    fetch("https://secret-forest-05738.herokuapp.com/workouts", {
+   await fetch("https://secret-forest-05738.herokuapp.com/workouts", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
