@@ -13,9 +13,10 @@ const Header = () => {
 };
 
 const Row = (props) => {
+
   return (
     <div className="grid grid-cols-5 col:auto text-base text-center mt-1 text-blue-200 rounded-sm mb-1 bg-gradient-to-b from-sky-800 to-sky-700 opacity-75">
-      <div>{props.index}</div>
+      <div>{props.index + 1}</div>
       <div>{props.exercise}</div>
       <div>{props.activity}</div>
       <div>{props.weight}</div>
@@ -32,11 +33,11 @@ const Table = (props) => {
       </p>
       <Header />
       {props.workouts.map((obj, index) => (
-        <div key={index}>
+        <div key={obj._id}>
           <Row
             reps={obj.reps}
             weight={obj.weight}
-            index={index + 1}
+            index={index}
             activity={obj.exercise.activity}
             exercise={obj.exercise.exercise}
           />

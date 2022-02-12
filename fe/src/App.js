@@ -27,8 +27,8 @@ function App() {
         <Route path="/" element={<Mainhome setToken={setToken} />}/>
         <Route path="/signup" element={<Signup />} />
         <Route path="/start" element={<Startpage setToken={setToken} token={token}/>} />
-        <Route path="/search-exercise" element={<Search  token={token} workoutDisplay={workoutDisplay} /> } />
-        <Route path="/log-entry" element={<Log token={token} workouts={workouts} />} />
+        <Route path="/search-exercise" element={<Search  token={token} workoutDisplay={workoutDisplay} setToken={setToken} /> } />
+        <Route path="/log-entry" element={<Log token={token} workouts={workouts} setToken={setToken} />} />
         <Route path="/login" element={<Login token={token} handleToken={handleToken}  />} />
     
       </Routes>

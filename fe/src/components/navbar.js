@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+
 
 const Brand = () => {
   return (
@@ -14,12 +15,12 @@ const Brand = () => {
 };
 
 const Menu = (props) => {
-  const [click, handleClick] = useState(false);
+const[click,handleClick] = useState(false)
 
+const navigate=useNavigate()
   function logout() {
     props.setToken(null);
-    console.log(props.token);
-    props.navigate("/login");
+    navigate("/login");
   }
 
   if (click) {
@@ -33,7 +34,7 @@ const Menu = (props) => {
             Logout
           </li>
           <li className="shadow-sky-900 shadow-xl pl-2 cursor:pointer">
-            Add new workout
+            <Link to="/search-exercise">Add new workout</Link>
           </li>
         </ul>
       </div>
@@ -47,11 +48,11 @@ const Menu = (props) => {
 };
 
 const Navbar = (props) => {
-  const navigate = useNavigate();
+
   return (
     <div className="flex justify-between bg-sky-800">
       <Brand />
-      <Menu setToken={props.setToken} token={props.token} navigate={navigate} />
+      <Menu setToken={props.setToken} token={props.token} />
     </div>
   );
 };
