@@ -17,7 +17,7 @@ const Addbutton = () => {
 
 const Log = (props) => {
   return (
-    <div className="w-screen h-screen overflow-auto box-border  bg-gradient-to-b from-blue-900 to-sky-800">
+    <div className="w-screen h-screen overflow-y-scroll box-border  bg-gradient-to-b from-blue-900 to-sky-800">
       <Navbar />
       <Table workouts={props.workouts} />
       <Addbutton />
