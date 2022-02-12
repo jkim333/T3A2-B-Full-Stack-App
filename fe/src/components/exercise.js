@@ -2,7 +2,14 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./navbar";
 import Input from "./input";
 
-const ExerciseType = ({ type, exercises, handleBtn, btn, token }) => {
+const ExerciseType = ({
+  type,
+  exercises,
+  handleBtn,
+  btn,
+  token,
+  workoutDisplay,
+}) => {
   const [allexercises, setActivities] = useState([]);
   const [activityBtn, handleActivity] = useState(false);
   const [id, handleActivityid] = useState("");
@@ -33,7 +40,13 @@ const ExerciseType = ({ type, exercises, handleBtn, btn, token }) => {
 
   if (activityBtn) {
     return (
-      <Input exercise={exercise} activity={activity} id={id} token={token} />
+      <Input
+        exercise={exercise}
+        activity={activity}
+        id={id}
+        token={token}
+        workoutDisplay={workoutDisplay}
+      />
     );
   }
 
@@ -68,7 +81,7 @@ const TitleBar = () => {
   );
 };
 
-function handledata(array) {
+export function handledata(array) {
   const new_array = [];
   array.map((obj) => new_array.push(obj.exercise));
   const no_duplicate_exercises = new_array.filter(
@@ -81,10 +94,14 @@ const ExerciseDisplay = (props) => {
   const [exercises, handleExercises] = useState([]);
   const [btn, handleBtn] = useState(false);
 
+  function exerciselist(data) {
+    return handleExercises(data);
+  }
+
   useEffect(() => {
     return fetch("https://secret-forest-05738.herokuapp.com/exercises")
       .then((res) => res.json())
-      .then((data) => handleExercises(data.results))
+      .then((data) => exerciselist(data.results))
       .catch((err) => alert(err));
   }, []);
 
@@ -101,6 +118,7 @@ const ExerciseDisplay = (props) => {
               btn={btn}
               handleBtn={handleBtn}
               token={props.token}
+              workoutDisplay={props.workoutDisplay}
             />
           </div>
         ))}

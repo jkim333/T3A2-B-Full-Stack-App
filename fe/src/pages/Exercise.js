@@ -5,7 +5,11 @@ import Footer from "../components/footer";
 const Search = (props) => {
   return (
     <div>
-      <ExerciseDisplay token={props.token} />
+      <ExerciseDisplay
+        token={props.token}
+        userId={props.userId}
+        workoutDisplay={props.workoutDisplay}
+      />
       <Footer />
     </div>
   );

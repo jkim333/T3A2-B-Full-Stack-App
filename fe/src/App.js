@@ -12,21 +12,23 @@ import Startpage from "./pages/Start";
 
 function App() {
   const [token, setToken] = useState(null);
-  // const [userID, setUserid] = useState('');
-  // console.log(token)
+  const [workouts, setWorkout] = useState([]);
   function handleToken(token){
       setToken(token)
-     console.log(token)
   }
 
+
+  function workoutDisplay (data){
+      setWorkout(data)
+  }
   return (
   
       <Routes>
         <Route path="/" element={<Mainhome setToken={setToken} />}/>
         <Route path="/signup" element={<Signup />} />
         <Route path="/start" element={<Startpage setToken={setToken} token={token}/>} />
-        <Route path="/search-exercise" element={<Search  token={token} setToken={setToken} /> } />
-        <Route path="/log-entry" element={<Log token={token}/>} />
+        <Route path="/search-exercise" element={<Search  token={token} workoutDisplay={workoutDisplay} /> } />
+        <Route path="/log-entry" element={<Log token={token} workouts={workouts} />} />
         <Route path="/login" element={<Login token={token} handleToken={handleToken}  />} />
     
       </Routes>

@@ -98,14 +98,13 @@ const SaveclearButton = (props) => {
     props.handleRepsInput("");
   }
 
-  let form_object = {
+  let post_object = {
     exerciseId: props.id,
     exercise: props.exercise,
     activity: props.activity,
-    weights: props.inputweight,
+    weight: props.inputweight,
     reps: props.inputreps,
   };
-
   function handleSubmit(e) {
     e.preventDefault();
     fetch("https://secret-forest-05738.herokuapp.com/workouts", {
@@ -114,7 +113,7 @@ const SaveclearButton = (props) => {
         "Content-Type": "application/json",
         authorization: `Bearer ${props.token}`,
       },
-      body: JSON.stringify(form_object),
+      body: JSON.stringify(post_object),
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
@@ -122,7 +121,21 @@ const SaveclearButton = (props) => {
         alert(err);
         return;
       });
-    console.log(props.token);
+
+    fetch("https://secret-forest-05738.herokuapp.com/workouts", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${props.token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => props.workoutDisplay(data.results))
+      .catch((err) => {
+        alert(err);
+        return;
+      });
+
     navigate("/log-entry");
   }
 
@@ -146,7 +159,7 @@ const SaveclearButton = (props) => {
   );
 };
 
-const Input = ({ exercise, activity, id, token }) => {
+const Input = ({ exercise, activity, id, token, workoutDisplay }) => {
   const [inputweight, handleWeightInput] = useState("");
   const [inputreps, handleRepsInput] = useState("");
 
@@ -171,6 +184,7 @@ const Input = ({ exercise, activity, id, token }) => {
         activity={activity}
         id={id}
         token={token}
+        workoutDisplay={workoutDisplay}
       />
     </>
   );

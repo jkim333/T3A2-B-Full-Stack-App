@@ -21,7 +21,7 @@ export default function Login(props) {
       username: username,
       password: password,
     };
-    await fetch("http://localhost:3002/auth/login", {
+    await fetch("https://secret-forest-05738.herokuapp.com/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ export default function Login(props) {
       .catch((err) => alert(err));
     navigate("/start");
   }
-  //
+  //)
   return (
     <div className="w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800">
       <Navbar />

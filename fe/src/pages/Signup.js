@@ -21,7 +21,7 @@ export default function Signup() {
       username: username,
       password: password,
     };
-    await fetch("http://localhost:3002/auth/signup", {
+    await fetch("https://secret-forest-05738.herokuapp.com/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
