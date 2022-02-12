@@ -2,7 +2,7 @@
 
 exports[`snapshot testing renders correctly 1`] = `
 <div
-  className="w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800"
+  className=""
 >
   <div
     className="flex justify-between bg-sky-800"
@@ -57,7 +57,7 @@ exports[`snapshot testing renders correctly 1`] = `
     </a>
   </div>
   <div
-    className="bg-sky-800  border-t border-blue-300 pb-1 text-center text-blue-200 w-screen opacity-80  bottom-0"
+    className="bg-sky-800  border-t border-blue-300 pb-1 text-center text-blue-200 w-screen opacity-80 relative bottom-0"
   >
     <footer>
       © 2022

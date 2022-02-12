@@ -15,7 +15,7 @@ const Header = () => {
 const Row = (props) => {
 
   return (
-    <div className="grid grid-cols-5 col:auto text-base text-center m-1 text-blue-200 rounded-sm mb-1 bg-gradient-to-b from-sky-800 to-sky-700 opacity-75">
+    <div className="grid grid-cols-5 col:auto text-base text-center m-1 text-blue-200 rounded-sm mb-1 bg-gradient-to-b from-sky-800 to-sky-700 opacity-75 ">
       <div>{props.index + 1}</div>
       <div>{props.exercise}</div>
       <div>{props.activity}</div>
@@ -27,7 +27,7 @@ const Row = (props) => {
 
 const Table = (props) => {
   return (
-    <div className=" p-0.5 rounded w-11/12 mx-auto mt-5 h-full bg-gradient-to-b from-blue-900 to-sky-800 ">
+    <div className=" p-0.5 rounded w-11/12 mx-auto  mt-5 border border-sky-900 ">
       <p className="text-blue-200 text-center text-xl border-b border-sky-800 pt-10">
         Workout
       </p>

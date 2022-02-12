@@ -5,7 +5,7 @@ import Navbar from "./navbar";
 
 const Home = (props) => {
   return (
-    <div className="w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800">
+    <div >
       <Navbar setToken={props.setToken} />
       <div className="flex flex-row justify-center">
         <Link

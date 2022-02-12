@@ -35,7 +35,7 @@ export default function Login(props) {
   }
   //)
   return (
-    <div className="w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800">
+    <div >
       <Navbar />
       <h1 className="text-blue-200 text-center mt-5 text-lg">
         Don&apos;t have an account!{" "}

@@ -106,7 +106,7 @@ const ExerciseDisplay = (props) => {
   }, []);
 
   return (
-    <div className="w-screen h-screen overflow-hidden box-border  bg-gradient-to-b from-blue-900 to-sky-800">
+    <div>
       <Navbar setToken={props.setToken} token={props.token}/>
       <TitleBar />
       {exercises &&

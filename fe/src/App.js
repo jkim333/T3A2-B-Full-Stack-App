@@ -22,7 +22,7 @@ function App() {
       setWorkout(data)
   }
   return (
-   <div className="w-screen h-screen bg-gradient-to-b from-blue-900 to-sky-800">
+   <div className="w-screen h-screen overflow-auto  bg-gradient-to-b from-blue-900 to-sky-800">
       <Routes>
         <Route path="/" element={<Mainhome setToken={setToken} />}/>
         <Route path="/signup" element={<Signup />} />
