@@ -13,12 +13,12 @@ const Brand = () => {
 
 const Menu = (props) => {
   const [click, handleClick] = useState(false);
-  const navigate = useNavigate();
+
 
   function logout() {
     props.setToken(null);
     console.log(props.token)
-    navigate("/login");
+    props.navigate("/login");
   }
 
   if (click) {
@@ -46,10 +46,11 @@ const Menu = (props) => {
 };
 
 const Navbar = (props) => {
+  const navigate = useNavigate();
   return (
     <div className="flex justify-between bg-sky-800">
       <Brand />
-      <Menu setToken={props.setToken} token={props.token} />
+      <Menu setToken={props.setToken} token={props.token} navigate={navigate}/>
     </div>
   );
 };
