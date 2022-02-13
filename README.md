@@ -1,5 +1,16 @@
 ## R1.	Description of the app
 
+**App link :** [Xero-fitness](https://xero-fitness-club.vercel.app/)
+
+**Github link:** [Github-repository](https://github.com/jkim333/T3A2-B-Full-Stack-App)
+
+**Project management tool links:**
+
+[Trello board](https://trello.com/b/yHwRPjUD/agile-sprint-board)
+
+[Asana Gantt-chart](https://app.asana.com/0/1201697443045398/1201697443045398)
+
+
 - **Description and purpose:** 
 
 The app our team will build is a fitness tracking app for athletes and workout enthusiasts. The purpose of the app is to help users to log their fitness performance for a variety of exercises including weight lifting, running and cycling. This app can help users set their fitness goals and track their performance over time.
@@ -129,3 +140,4 @@ In summary, MongoDB is responsible as a database, ExpressJS and NodeJS are respo
 ![4](./docs/asana/6.png)
 ![4](./docs/asana/7.png)
 ![4](./docs/asana/8.png)
+
