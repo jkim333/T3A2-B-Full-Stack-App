@@ -1,70 +1,43 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- **Description and purpose:** 
 
-## Available Scripts
+The app our team will build is a fitness tracking app for athletes and workout enthusiasts. The purpose of the app is to help users to log their fitness performance for a variety of exercises including weight lifting, running and cycling. This app can help users set their fitness goals and track their performance over time.
 
-In the project directory, you can run:
+- **Functionality / features:**
 
-### `yarn start`
+    1. User signup. A user enters their username, email, password, age, weight, height, and optionally their profile picture when signing up.
+    2. User login. A user enter their email or username, and password to login.
+    3. User signout.
+    4. Select an exercise. A user can select their exercise that they want to keep track of.
+    5. Exercise log entry. After a user selects their exercise, they can enter in the specific details of their exercise (e.g. weight and reps).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Target audience:** 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The target audience is anyone that wants to track their fitness.
 
-### `yarn test`
+- **Tech stack:** 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The technology stack used for this project is known as the MERN stack, which consists of MongoDB, ExpressJS, React, and NodeJS.
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Application Architecture Diagram
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The technology stack used for this project is known as the MERN stack, which consists of MongoDB, ExpressJS, React, and NodeJS.
 
-### `yarn eject`
+Our application will be fronted by a React app which will be accessed by the users directly. The React app will serve as the frontend, to provide the user interface and interaction with the users. The users will not be allowed to access the backend web server and database directly for security reasons. The React app will be hosted on Netlify.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Our backend web server consists of NodeJS and ExpressJS. ExpressJS is a web framework that runs on top of NodeJS to create a web server. Therefore, NodeJS and ExpressJS will work together to operate as a web server and respond to HTTP requests. NodeJS and ExpressJS will set up a backend REST API server to communicate with the React app. Our backend web server will be containerised using Docker, and will be hosted on AWS Elastic Container Service (ECS).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+MongoDB is used as the database to allow for persistent storage of data. It is the responsibility of NodeJS and ExpressJS to communicate with MongoDB. The frontend React app should not talk to the database as it is not a secure practice. MongoDB will be hosted on MongoDB Atlas.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Mongoose is an Object Data Modelling library for MongoDB, which allows developers to enforce schema for MongoDB at the NodeJS application layer and provides tools and features to make it easier to work with mongoDB. Mongoose will be used to communicate with the MongoDB database.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+In summary, MongoDB is responsible as a database, ExpressJS and NodeJS are responsible as a backend web server, and React is responsible as a frontend app to interact with the users.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
