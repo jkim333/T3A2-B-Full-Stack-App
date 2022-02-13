@@ -5,7 +5,7 @@ import Navbar from "./navbar";
 
 const Home = (props) => {
   return (
-    <div >
+    <div>
       <Navbar setToken={props.setToken} />
       <div className="flex flex-row justify-center">
         <Link

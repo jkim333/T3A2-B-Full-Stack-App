@@ -7,7 +7,7 @@ const Search = (props) => {
     <div>
       <ExerciseDisplay
         token={props.token}
-        setToken ={props.setToken}
+        setToken={props.setToken}
         userId={props.userId}
         workoutDisplay={props.workoutDisplay}
       />

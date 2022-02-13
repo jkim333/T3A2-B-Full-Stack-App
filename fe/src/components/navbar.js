@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useNavigate, Link } from "react-router-dom";
 
-
 const Brand = () => {
   return (
     <h1
@@ -15,9 +14,9 @@ const Brand = () => {
 };
 
 const Menu = (props) => {
-const[click,handleClick] = useState(false)
+  const [click, handleClick] = useState(false);
 
-const navigate=useNavigate()
+  const navigate = useNavigate();
   function logout() {
     props.setToken(null);
     navigate("/login");
@@ -48,7 +47,6 @@ const navigate=useNavigate()
 };
 
 const Navbar = (props) => {
-
   return (
     <div className="flex justify-between bg-sky-800">
       <Brand />

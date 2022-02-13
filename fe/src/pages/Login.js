@@ -35,7 +35,7 @@ export default function Login(props) {
   }
   //)
   return (
-    <div >
+    <div>
       <Navbar />
       <h1 className="text-blue-200 text-center mt-5 text-lg">
         Don&apos;t have an account!{" "}

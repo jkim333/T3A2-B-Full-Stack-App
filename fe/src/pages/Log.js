@@ -15,13 +15,11 @@ import Footer from "../components/footer";
 // };
 
 const Log = (props) => {
-
-
   return (
     <div>
-      <Navbar setToken={props.setToken} token={props.token}/>
+      <Navbar setToken={props.setToken} token={props.token} />
       <Table workouts={props.workouts} />
-      
+
       <Footer />
     </div>
   );

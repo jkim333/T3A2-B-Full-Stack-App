@@ -1,4 +1,4 @@
-import React, {useState}from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -8,31 +8,47 @@ import Search from "./pages/Exercise";
 import Log from "./pages/Log";
 import Startpage from "./pages/Start";
 
-
-
 function App() {
   const [token, setToken] = useState(null);
   const [workouts, setWorkout] = useState([]);
-  function handleToken(token){
-      setToken(token)
+  function handleToken(token) {
+    setToken(token);
   }
 
-
-  function workoutDisplay (data){
-      setWorkout(data)
+  function workoutDisplay(data) {
+    setWorkout(data);
   }
   return (
-   <div className="w-screen h-screen overflow-auto  bg-gradient-to-b from-blue-900 to-sky-800">
+    <div className="w-screen h-screen overflow-auto  bg-gradient-to-b from-blue-900 to-sky-800">
       <Routes>
-        <Route path="/" element={<Mainhome setToken={setToken} />}/>
+        <Route path="/" element={<Mainhome setToken={setToken} />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/start" element={<Startpage setToken={setToken} token={token}/>} />
-        <Route path="/search-exercise" element={<Search  token={token} workoutDisplay={workoutDisplay} setToken={setToken} /> } />
-        <Route path="/log-entry" element={<Log token={token} workouts={workouts} setToken={setToken} />} />
-        <Route path="/login" element={<Login token={token} handleToken={handleToken}  />} />
-    
+        <Route
+          path="/start"
+          element={<Startpage setToken={setToken} token={token} />}
+        />
+        <Route
+          path="/search-exercise"
+          element={
+            <Search
+              token={token}
+              workoutDisplay={workoutDisplay}
+              setToken={setToken}
+            />
+          }
+        />
+        <Route
+          path="/log-entry"
+          element={
+            <Log token={token} workouts={workouts} setToken={setToken} />
+          }
+        />
+        <Route
+          path="/login"
+          element={<Login token={token} handleToken={handleToken} />}
+        />
       </Routes>
-      </div>
+    </div>
   );
 }
 

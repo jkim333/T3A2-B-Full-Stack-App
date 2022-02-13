@@ -107,7 +107,7 @@ const ExerciseDisplay = (props) => {
 
   return (
     <div>
-      <Navbar setToken={props.setToken} token={props.token}/>
+      <Navbar setToken={props.setToken} token={props.token} />
       <TitleBar />
       {exercises &&
         handledata(exercises).map((type, index) => (

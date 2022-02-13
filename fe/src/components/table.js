@@ -13,7 +13,6 @@ const Header = () => {
 };
 
 const Row = (props) => {
-
   return (
     <div className="grid grid-cols-5 col:auto text-base text-center m-1 text-blue-200 rounded-sm mb-1 bg-gradient-to-b from-sky-800 to-sky-700 opacity-75 ">
       <div>{props.index + 1}</div>
